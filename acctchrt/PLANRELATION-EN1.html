@@ -1,0 +1,2922 @@
+<html>
+<head>
+<title>Planfile Relationship Reference</title>
+</head>
+<body>
+<h1>Plan File Relationship Reference Guide</h1>
+<h3>
+The Administrator Plan File Record and Table Relationship Diagrams
+</h3>
+For diagrams, refer to the printable (pdf) version of the Plan File
+Relationship Guide in the Help - Formatted Documentation.
+<HR>
+<HR>
+<h3>
+Relationships involving
+'MLEH' Mass Load 'PLEH' 7-Pay Premium per Unit Allocation Records
+</h3>
+If the Premium banding use field is '1', the
+'PLEI' 7-Pay Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLEI' 7-Pay Premium per Unit Banding Record.
+
+<P>
+If the Premium process key field is '05', the
+'PLEK' 7-Pay Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLEK' 7-Pay Premium Rating Table Record.
+
+<P>
+<h3>
+Relationships involving
+'MLEM' Mass Load 'PLEM' 7-Pay Waiver Premium per Unit Allocation Records
+</h3>
+If the Premium banding use field is '1', the
+'PLEN' 7-Pay Waiver Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLEN' 7-Pay Waiver Premium per Unit Banding Record.
+
+<P>
+If the Premium process key field is '05', the
+'PLEP' 7-Pay Waiver Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLEP' 7-Pay Waiver Premium Rating Table Record.
+
+<P>
+<h3>
+Relationships involving
+'MLGC' Mass Load 'PLGC' SEC Guideline Premium Allocation Records
+</h3>
+If the Premium process key field is '05', the
+'PLGO' Guideline Level Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGO' Guideline Level Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLGM' Guideline Level Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGM' Guideline Level Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'MLGL' Mass Load 'PLGL' Guideline Level Premium per Unit Allocation Records
+</h3>
+If the Premium process key field is '05', the
+'PLGO' Guideline Level Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLGL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGO' Guideline Level Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLGM' Guideline Level Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLGL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGM' Guideline Level Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'MLGS' Mass Load 'PLGS' Guideline Single Premium per Unit Allocation Records
+</h3>
+If the Premium process key field is '05', the
+'PLGV' Guideline Single Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLGS_PlBenTyp (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGV' Guideline Single Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLGT' Guideline Single Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLGS_PlBenTyp (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGT' Guideline Single Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'MLSH' Mass Load 'PLSH' Surrender Charge per Unit Allocation Records
+</h3>
+If the Premium process key field is '05', the
+'PLSK' Surrender Charge Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSK' Surrender Charge Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLSI' Surrender Charge per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSI' Surrender Charge per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'MLSM' Mass Load 'PLSM' Maximum Surrender Charge per Unit Allocation Records
+</h3>
+If the Premium process key field is '05', the
+'PLSP' Maximum Surrender Charge Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSP' Maximum Surrender Charge Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLSN' Maximum Surrender Charge per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSN' Maximum Surrender Charge per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'MLOA' Mass Load 'PLOA' Minimum Premium per Unit Allocation Records
+</h3>
+If the Premium process key field is '05', the
+'PLOT' Minimum Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLOA Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLOT' Minimum Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLOB' Minimum Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLOA Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLOB' Minimum Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'MLRC' Mass Load 'PLRC' Required Contribution Premium per Unit Allocation Records
+</h3>
+If the Premium process key field is '05', the
+'PLRF' Required Contribution Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLRC Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLRF' Required Contribution Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLRD' Required Contribution Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLRC Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLRD' Required Contribution Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'MLTA' Mass Load 'PLTA' Target One Premium per Unit Allocation Records
+</h3>
+If the Premium process key field is '05', the
+'PLTD' Target One Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLTA Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLTD' Target One Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLTB' Target One Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLTA Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLTB' Target One Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'MLTE' Mass Load 'PLTE' Target Two Premium per Unit Allocation Records
+</h3>
+If the Premium process key field is '05', the
+'PLTH' Target Two Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLTH' Target Two Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLTF' Target Two Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLTF' Target Two Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'MLWL' Mass Load 'PLWL' Waiver Guideline Level Premium per Unit Allocation Records
+</h3>
+If the Premium process key field is '05', the
+'PLWO' Waiver Guideline Level Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLWO' Waiver Guideline Level Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLWM' Waiver Guideline Level Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLWM' Waiver Guideline Level Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'MLWS' Mass Load 'PLWS' Waiver Guideline Single Premium per Unit Allocation Records
+</h3>
+If the Premium process key field is '05', the
+'PLWV' Waiver Guideline Single Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLWV' Waiver Guideline Single Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLWT' Waiver Guideline Single Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLWT' Waiver Guideline Single Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLAC' Allocation Charge Table Record
+</h3>
+If the Financial - Charge Code field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+<h3>
+Relationships involving
+'PLAG' Assembly Guide Record
+</h3>
+If the Report ID field is not spaces, the
+Report Characteristics Table Record
+ is accessed.
+Use '0' (Queue) and PLAG Report ID (Report ID) as the key to read the
+Report Characteristics Table Record.
+
+<P>
+<h3>
+Relationships involving
+'PLAR' Administration and Reporting Control Record
+</h3>
+If the Module number field is '810', the
+'MT' Processing Control Module Lists Table
+ is accessed.
+Use '0' (Queue), 'MOD' (Table type), and '04' (Subtype) as the key to read the
+'MT' Processing Control Module Lists Table.
+
+<P>
+<h3>
+Relationships involving
+'PLAS' Accounting Processing Override Record
+</h3>
+If the Transaction code field is not spaces, the
+'TM' Accounting Transaction Processing Module Table
+ is accessed.
+Use '0' (Queue), 'TMD' (Table type), and '00' (Subtype) as the key to read the
+'TM' Accounting Transaction Processing Module Table.
+
+<P>
+<h3>
+Relationships involving
+'PLBB' Basic Benefit Record
+</h3>
+If the Par type field is not '0', the
+'PLPP' Participation Processing Control Record
+ is accessed.
+Use INCL Queue (Queue), PLBB Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLPP' Participation Processing Control Record.
+
+<P>
+If the COI-lvl tbl-ID field is not spaces, the
+'VJ' Valuation Net Premiums Table
+ is accessed.
+Use '0' (Queue), PLBB COI-lvl tbl-ID (Table ID), 'AA' (Table Type), INCL Issue age (Access Age), and INCL Sex code (Sex code) as the key to read the
+'VJ' Valuation Net Premiums Table.
+
+<P>
+If the Indicators - PLCF ind field is '1', the
+'PLCF' Collection Fees Record
+ is accessed.
+Use INCL Queue (Queue), PLBB Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCF' Collection Fees Record.
+
+<P>
+If the Commission - Access field is '2', the
+'PLCM' Commission Descriptions Record
+ is accessed.
+Use INCL Queue (Queue), PLBB Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCM' Commission Descriptions Record.
+
+<P>
+If the Indicators - PLRO field is '1', the
+'PLRO' Return of Premium Record
+ is accessed.
+Use INCL Queue (Queue), PLBB Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLRO' Return of Premium Record.
+
+<P>
+If the Ded-calc method field is '16','26', or '36, the
+'PLBX' Basic Processing Control Record
+ is accessed.
+Use INCL Queue (Queue), PLBB Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLBX' Basic Processing Control Record.
+
+<P>
+If the Units adjust field is '1', the
+'PLUN' Number of Units Change Control Record
+ is accessed.
+Use INCL Queue (Queue), PLBB Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLUN' Number of Units Change Control Record.
+
+<P>
+If the Units adjust field is '2', the
+'PLCL' COLA Benefit Description Record
+ is accessed.
+Use INCL Queue (Queue), PLBB Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCL' COLA Benefit Description Record.
+
+<P>
+If the Dynamic calculation field is '1', the
+'PLIA' Individual Access Record
+ is accessed.
+Use INCL Queue (Queue), PLBB Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLIA' Individual Access Record.
+
+<P>
+If the Indicators - Ins Type field is '0', the
+'BS' Cost Basis Effect Table
+ is accessed.
+Use '0' (Queue), 'BSF' (Table type), '01' (Subtable), and '1' (Tax code) as the key to read the
+'BS' Cost Basis Effect Table.
+
+<P>
+<h3>
+Relationships involving
+'PLBC' Basic Coverage Record
+</h3>
+If the Varying premium field is not '0', the
+'VP' Varying Premium Processing Table
+ is accessed.
+Use '0' (Queue), 'VPT' (Table type), and '01' (Subtype) as the key to read the
+'VP' Varying Premium Processing Table.
+
+<P>
+If the Product type field is not spaces, the
+'AI' Automatic At-Issue Accounting Table
+ is accessed.
+Use '0' (Queue), 'AIA' (Type), '01' (Subtype), and INCL Product type (Prod type) as the key to read the
+'AI' Automatic At-Issue Accounting Table.
+
+<P>
+If the Par type field is not spaces or '0', the
+'PLPP' Participation Processing Control Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLPP' Participation Processing Control Record.
+
+<P>
+If the Auto premium loans field is '1', the
+'PLLP' Loans and Payments Control Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLLP' Loans and Payments Control Record.
+
+<P>
+If the Deduction - Calc field is '7','8','9' or '24', the
+'PLPP' Participation Processing Control Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLPP' Participation Processing Control Record.
+
+<P>
+If the Status Timing field is not spaces, the
+'PN' Premium Notice Billing Table
+ is accessed.
+Use '0' (Queue), PLBC Status Timing (Status timing code), and '999999' (Thru duration) as the key to read the
+'PN' Premium Notice Billing Table.
+
+<P>
+If the Status Timing field is not spaces, the
+'CORT' Company Processing Rules Table
+ is accessed.
+Use PLBC Status Timing (Status Timing) as the key to read the
+'CORT' Company Processing Rules Table.
+
+<P>
+If the Qual proc rules field is not spaces, the
+'QP' Qualified Processing Rules Table
+ is accessed.
+Use '0' (Queue), PLBC Qual proc rules (Table type), and '01' (Subtype) as the key to read the
+'QP' Qualified Processing Rules Table.
+
+<P>
+If the Access Indicators - PLIR field is not '0', the
+'PLIR' LTC IPR Processing Rules Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLIR' LTC IPR Processing Rules Record.
+
+<P>
+If the Access Indicators - PLDC field is not '0', the
+'PLDC' Deferred Sales Charge Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLDC' Deferred Sales Charge Record.
+
+<P>
+If the Access Indicators - PLBV field is not '0', the
+'PLBV' Bonus Values Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLBV' Bonus Values Record.
+
+<P>
+If the Access Indicators - PLBX field is not '0', the
+'PLBX' Basic Processing Control Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLBX' Basic Processing Control Record.
+
+<P>
+If the Access Indicators - PLCA field is not '0', the
+'PLCA' Cash Value Processing Control Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCA' Cash Value Processing Control Record.
+
+<P>
+If the Access Indicators - PLCF field is not '0', the
+'PLCF' Collection Fees Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCF' Collection Fees Record.
+
+<P>
+If the Commission - Age Access field is '2', the
+'PLCM' Commission Descriptions Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCM' Commission Descriptions Record.
+
+<P>
+If the Access Indicators - PLCP field is '2', the
+'PLCP' Coverage Processing Control Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCP' Coverage Processing Control Record.
+
+<P>
+If the Access Indicators - PLDA field is not '0', the
+'PLDA' Annuity Data Control Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLDA' Annuity Data Control Record.
+
+<P>
+If the Access Indicators - PLIE field is not '0', the
+'PLIE' Inherent Element Control Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLIE' Inherent Element Control Record.
+
+<P>
+If the Access Indicators - PLLP field is not '0', the
+'PLLP' Loans and Payments Control Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLLP' Loans and Payments Control Record.
+
+<P>
+If the Access Indicators - PLRO field is not '0', the
+'PLRO' Return of Premium Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLRO' Return of Premium Record.
+
+<P>
+If the Access Indicators - PLVA field is not '0', the
+'PLVA' Coverage Extension Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLVA' Coverage Extension Record.
+
+<P>
+If the Discount Tbl ID field is not spaces, the
+'DT' Premium Discount Table
+ is accessed.
+Use '0' (Queue), PLBC Discount Tbl ID (Table type), and '01' (Subtype) as the key to read the
+'DT' Premium Discount Table.
+
+<P>
+If the Access Indicators - PLME field is not '0', the
+'PLME' Mortality and Expense Charges Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLME' Mortality and Expense Charges Banding Record.
+
+<P>
+If the Access Indicators - PLAB field is not '0', the
+'PLAB' Asset Based Charges Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLAB' Asset Based Charges Record.
+
+<P>
+If the Access Indicators - PLVT field is not '0', the
+'PLVT' Value Tracking Rules Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLVT' Value Tracking Rules Record.
+
+<P>
+If the Access Indicators - PLWC field is not '0', the
+'PLWC' Withdrawal Charges Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLWC' Withdrawal Charges Record.
+
+<P>
+If the XS tbl type field is not spaces, the
+'XS' Automatic Transfer Edits Rules Table
+ is accessed.
+Use '0' (Queue), PLBC XS tbl type (Table type), and '01' (Subtype) as the key to read the
+'XS' Automatic Transfer Edits Rules Table.
+
+<P>
+If the  Pension Indicator - Valid field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'PENS' (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+If the Premium - Method field is '8', the
+'PLPM' Multiple Premium Access Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLPM' Multiple Premium Access Record.
+
+<P>
+If the Living Benefit - Calc Method field is '2', the
+'PLVT' Value Tracking Rules Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLVT' Value Tracking Rules Record.
+
+<P>
+If the Living Benefit - Use field is '1' or '2', the
+'PLVT' Value Tracking Rules Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLVT' Value Tracking Rules Record.
+
+<P>
+If the Access Indicators - FV Tbl Type field is not spaces, the
+'FV' Fund Validation Table
+ is accessed.
+Use '0' (Queue), PLBC Access Indicators - FV Tbl Type (Table Type), and '01' (Subtype) as the key to read the
+'FV' Fund Validation Table.
+
+<P>
+If the Living Benefit - Calc Method field is '6', the
+'PLWP' Withdrawal Benefit Processing Rules Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLWP' Withdrawal Benefit Processing Rules Record.
+
+<P>
+<h3>
+Relationships involving
+'PLBE' Basic Extra Premiums Record
+</h3>
+If the Par type field is not '0', the
+'PLPP' Participation Processing Control Record
+ is accessed.
+Use INCL Queue (Queue), PLBE Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLPP' Participation Processing Control Record.
+
+<P>
+If the Indicators - PLCF ind field is '1', the
+'PLCF' Collection Fees Record
+ is accessed.
+Use INCL Queue (Queue), PLBE Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCF' Collection Fees Record.
+
+<P>
+If the Commission - Access field is '2', the
+'PLCM' Commission Descriptions Record
+ is accessed.
+Use INCL Queue (Queue), PLBE Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCM' Commission Descriptions Record.
+
+<P>
+If the Dynamic calculation field is '1', the
+'PLIA' Individual Access Record
+ is accessed.
+Use INCL Queue (Queue), PLBE Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLIA' Individual Access Record.
+
+<P>
+If the Indicators - Insurance Type field is 'O', the
+'BS' Cost Basis Effect Table
+ is accessed.
+Use '0' (Queue), 'BSF' (Table type), '01' (Subtable), and '1' (Tax code) as the key to read the
+'BS' Cost Basis Effect Table.
+
+<P>
+<h3>
+Relationships involving
+'PLBV' Bonus Values Record
+</h3>
+If the BT Table Access Data - Table ID field and BT Table Access Data - SubID field are not spaces, the
+'BT' Bonus Values Table
+ is accessed.
+Use '0' (Queue), PLBV BT Table Access Data - Table ID (Table ID), and PLBV BT Table Access Data - SubID (SubID) as the key to read the
+'BT' Bonus Values Table.
+
+<P>
+If the Recap Table Codes - Partial field is not spaces, the
+'BW' Bonus Recapture Rules Table
+ is accessed.
+Use '0' (Queue), PLBV Recap Table Codes - Partial (Table type), and '01' (Subtype) as the key to read the
+'BW' Bonus Recapture Rules Table.
+
+<P>
+If the Recap Table Codes - Partial waive field is not spaces, the
+'BW' Bonus Recapture Rules Table
+ is accessed.
+Use '0' (Queue), PLBV Recap Table Codes - Partial waive (Table type), and '01' (Subtype) as the key to read the
+'BW' Bonus Recapture Rules Table.
+
+<P>
+If the Recap Table Codes - Full field is not spaces, the
+'BW' Bonus Recapture Rules Table
+ is accessed.
+Use '0' (Queue), PLBV Recap Table Codes - Full (Table type), and '01' (Subtype) as the key to read the
+'BW' Bonus Recapture Rules Table.
+
+<P>
+If the Recap Table Codes - Full waive field is not spaces, the
+'BW' Bonus Recapture Rules Table
+ is accessed.
+Use '0' (Queue), PLBV Recap Table Codes - Full waive (Table type), and '01' (Subtype) as the key to read the
+'BW' Bonus Recapture Rules Table.
+
+<P>
+If the Recap Table Codes - Required Minimum field is not spaces, the
+'BW' Bonus Recapture Rules Table
+ is accessed.
+Use '0' (Queue), PLBV Recap Table Codes - Required Minimum (Table type), and '01' (Subtype) as the key to read the
+'BW' Bonus Recapture Rules Table.
+
+<P>
+If the Recap Table Codes - Freelook field is not spaces, the
+'BW' Bonus Recapture Rules Table
+ is accessed.
+Use '0' (Queue), PLBV Recap Table Codes - Freelook (Table type), and '01' (Subtype) as the key to read the
+'BW' Bonus Recapture Rules Table.
+
+<P>
+If the Recap Table Codes - Maturity field is not spaces, the
+'BW' Bonus Recapture Rules Table
+ is accessed.
+Use '0' (Queue), PLBV Recap Table Codes - Maturity (Table type), and '01' (Subtype) as the key to read the
+'BW' Bonus Recapture Rules Table.
+
+<P>
+If the Recap Table Codes - Death field is not spaces, the
+'BW' Bonus Recapture Rules Table
+ is accessed.
+Use '0' (Queue), PLBV Recap Table Codes - Death (Table type), and '01' (Subtype) as the key to read the
+'BW' Bonus Recapture Rules Table.
+
+<P>
+If the Recap Table Codes - Annuitization field is not spaces, the
+'BW' Bonus Recapture Rules Table
+ is accessed.
+Use '0' (Queue), PLBV Recap Table Codes - Annuitization (Table type), and '01' (Subtype) as the key to read the
+'BW' Bonus Recapture Rules Table.
+
+<P>
+<h3>
+Relationships involving
+'PLBX' Basic Processing Control Record
+</h3>
+If the Coverage Processing Calculation Methods - Guideline-level field is '1', the
+'PLGL' Guideline Level Premium per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGL' Guideline Level Premium per Unit Allocation Record.
+
+<P>
+If the Coverage Processing Calculation Methods - Guideline-single field is '1', the
+'PLGS' Guideline Single Premium per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGS' Guideline Single Premium per Unit Allocation Record.
+
+<P>
+If the Coverage Processing Calculation Methods - Min prem field is '1','2','4','5' or '6', the
+'PLOA' Minimum Premium per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLOA' Minimum Premium per Unit Allocation Record.
+
+<P>
+If the Coverage Processing Calculation Methods - Req prem field is '1','2','5','9' or 'D', the
+'PLRC' Required Contribution Premium per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLRC' Required Contribution Premium per Unit Allocation Record.
+
+<P>
+If the Coverage Processing Calculation Methods - Target-1 field is not '0', the
+'PLTA' Target One Premium per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLTA' Target One Premium per Unit Allocation Record.
+
+<P>
+If the Coverage Processing Calculation Methods - Target-2 field is not '0', the
+'PLTE' Target Two Premium per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLTE' Target Two Premium per Unit Allocation Record.
+
+<P>
+If the Coverage Processing Calculation Methods - Surr-chrg-units field is not '0', the
+'PLSC' Surrender Charge Definition Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSC' Surrender Charge Definition Record.
+
+<P>
+If the Coverage Processing Calculation Methods - Surr-chrg-max field is '1' or '2', the
+'PLSM' Maximum Surrender Charge per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSM' Maximum Surrender Charge per Unit Allocation Record.
+
+<P>
+If the Coverage Processing Calculation Methods - TAMRA field is '1','2' or '4', the
+'PLEH' 7-Pay Premium per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLEH' 7-Pay Premium per Unit Allocation Record.
+
+<P>
+If the Coverage Processing Calculation Methods - WP-TAMRA field is '1' or '2', the
+'PLEM' 7-Pay Waiver Premium per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLEM' 7-Pay Waiver Premium per Unit Allocation Record.
+
+<P>
+If the Coverage Processing Calculation Methods - SEC-guideline field is '1', the
+'PLGC' SEC Guideline Premium Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGC' SEC Guideline Premium Allocation Record.
+
+<P>
+If the Coverage Processing Calculation Methods - WP-Guideline-level field is '1' or '2', the
+'PLWL' Waiver Guideline Level Premium per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLWL' Waiver Guideline Level Premium per Unit Allocation Record.
+
+<P>
+If the Coverage Processing Calculation Methods - WP-Guideline-single field is '1' or '2', the
+'PLWS' Waiver Guideline Single Premium per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLWS' Waiver Guideline Single Premium per Unit Allocation Record.
+
+<P>
+<h3>
+Relationships involving
+'PLCA' Cash Value Processing Control Record
+</h3>
+If the CV banding use code field is '1', the
+'PLCB' Cash Value Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCB' Cash Value Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLCF' Collection Fees Record
+</h3>
+If the Payment type field is not spaces, the
+'AT' Account Type Table
+ is accessed.
+Use '0' (Queue), 'ATT' (Table type), and '01' (Subtype) as the key to read the
+'AT' Account Type Table.
+
+<P>
+If the Premium Tax - Use field is not spaces, the
+'PLCT' State Premium Taxes Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCT' State Premium Taxes Record.
+
+<P>
+If the Test guideline field is '1', the
+'PLBX' Basic Processing Control Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLBX' Basic Processing Control Record.
+
+<P>
+If the Percent Load Payment - Charge field is '2', the
+'PLTA' Target One Premium per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLTA' Target One Premium per Unit Allocation Record.
+
+<P>
+If the Percent Load Payment - Charge field is '2', the
+'PLTE' Target Two Premium per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLTE' Target Two Premium per Unit Allocation Record.
+
+<P>
+If the Calculation argument field is not '001', the
+'MF' Mode Premium Factors Table
+ is accessed.
+Use '0' (Queue) and PLCF Calculation argument (Calculation Argument) as the key to read the
+'MF' Mode Premium Factors Table.
+
+<P>
+<h3>
+Relationships involving
+'PLCL' COLA Benefit Description Record
+</h3>
+If the Increase table field is not spaces, the
+'CI' Consumer Price Index Table
+ is accessed.
+Use '0' (Queue), PLCL Increase table (Table type), and '01' (Subtype) as the key to read the
+'CI' Consumer Price Index Table.
+
+<P>
+<h3>
+Relationships involving
+'PLCM' Commission Descriptions Record
+</h3>
+If the Banding Use field is '1', the
+'PLCN' Commission Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCN' Commission Banding Record.
+
+<P>
+If the Compensation Code - 1st Year field and Compensation Code - Renewal field are not spaces, the
+'CR' Commission Rates Table
+ is accessed.
+Use '0' (Queue), 'COM' (Table type), and '01' (Subtype) as the key to read the
+'CR' Commission Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'PLCN' Commission Banding Record
+</h3>
+If the 1st Year field is not spaces, the
+'CR' Commission Rates Table
+ is accessed.
+Use '0' (Queue), 'COM' (Table type), and '01' (Subtype) as the key to read the
+'CR' Commission Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'PLCP' Coverage Processing Control Record
+</h3>
+If the CX table ID field is not spaces, the
+'CX' Categorize Policy Exhibit Actions Table
+ is accessed.
+Use '0' (Queue) and PLCP CX table ID (Table type) as the key to read the
+'CX' Categorize Policy Exhibit Actions Table.
+
+<P>
+If the TEFRA/TAMRA IN01 tbl field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), PLCP TEFRA/TAMRA IN01 tbl (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the NLG CY01 Tbl field is not spaces, the
+'CY' Multi-tier NLG Testing Variables Table
+ is accessed.
+Use '0' (Queue) and PLCP NLG CY01 Tbl (Table type) as the key to read the
+'CY' Multi-tier NLG Testing Variables Table.
+
+<P>
+If the Extend 7-Pay Rule field is '1', the
+'CORT' Company Processing Rules Table
+ is accessed.
+Use  as the key to read the
+'CORT' Company Processing Rules Table.
+
+<P>
+<h3>
+Relationships involving
+'PLCT' State Premium Taxes Record
+</h3>
+If the Payment Type field is not spaces, the
+'AT' Account Type Table
+ is accessed.
+Use '0' (Queue), 'ATT' (Table type), and '01' (Subtype) as the key to read the
+'AT' Account Type Table.
+
+<P>
+If the Pension code field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'PENS' (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+<h3>
+Relationships involving
+'PLDA' Annuity Data Control Record
+</h3>
+If the Payment option field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'POPT' (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+If the Fee charge code field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+If the Fee/Table field is not spaces, the
+'FM' Form and Mode Variance Table
+ is accessed.
+Use '0' (Queue), PLDA Fee/Table (Table type), and '01' (Subtype) as the key to read the
+'FM' Form and Mode Variance Table.
+
+<P>
+If the Minimum amount/table field is not spaces, the
+'FM' Form and Mode Variance Table
+ is accessed.
+Use '0' (Queue), PLDA Minimum amount/table (Table type), and '01' (Subtype) as the key to read the
+'FM' Form and Mode Variance Table.
+
+<P>
+If the Mortality table ID field is not spaces, the
+'QX' Mortality Table
+ is accessed.
+Use '0' (Queue), 'QXF' (Table type), PLDA Mortality table ID (Mortality Code), '1' (Lives), '1' (Decrement Type), PLDA Sex code (Sex code), and PLDA Issue age (Issue age) as the key to read the
+'QX' Mortality Table.
+
+<P>
+If the Cash Value Rate - Table type field and Cash Value Rate - Table subtype field are not spaces, the
+'VD' Valuation Interest by Duration Table
+ is accessed.
+Use '0' (Queue), PLDA Cash Value Rate - Table type (Table type), and PLDA Cash Value Rate - Table subtype (Subtype) as the key to read the
+'VD' Valuation Interest by Duration Table.
+
+<P>
+If the Disbursement Rate - Table type field and Disbursement Rate - Table subtype field are not spaces, the
+'VD' Valuation Interest by Duration Table
+ is accessed.
+Use '0' (Queue), PLDA Disbursement Rate - Table type (Table type), and PLDA Disbursement Rate - Table subtype (Subtype) as the key to read the
+'VD' Valuation Interest by Duration Table.
+
+<P>
+If the Table ID - due use field is not spaces, the
+'AU' Annuity Payout Disbursement Table
+ is accessed.
+Use '0' (Queue) and PLDA Table ID - due use (Table ID) as the key to read the
+'AU' Annuity Payout Disbursement Table.
+
+<P>
+If the Table ID - due use field is not spaces, the
+'CU' Annuity Payout Cash Value Table
+ is accessed.
+Use '0' (Queue), PLDA Table ID - due use (Table ID), '000' (Certain period), PLDA Issue age (Issue age), and PLDA Sex code (Sex code) as the key to read the
+'CU' Annuity Payout Cash Value Table.
+
+<P>
+If the Table ID - immediate use field is not spaces, the
+'AU' Annuity Payout Disbursement Table
+ is accessed.
+Use '0' (Queue) and PLDA Table ID - immediate use (Table ID) as the key to read the
+'AU' Annuity Payout Disbursement Table.
+
+<P>
+If the Table ID - immediate use field is not spaces, the
+'CU' Annuity Payout Cash Value Table
+ is accessed.
+Use '0' (Queue), PLDA Table ID - immediate use (Table ID), '000' (Certain period), PLDA Issue age (Issue age), and PLDA Sex code (Sex code) as the key to read the
+'CU' Annuity Payout Cash Value Table.
+
+<P>
+If the MB01 ID field is not spaces, the
+'MB' Mortality Adjustment Table
+ is accessed.
+Use '0' (Queue), 'ANN' (Table type), and PLDA MB01 ID (Subtype) as the key to read the
+'MB' Mortality Adjustment Table.
+
+<P>
+<h3>
+Relationships involving
+'PLDD' Death Claim Continuation Definition Record
+</h3>
+If the Transfer at Death - FE01 field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), PLDD Transfer at Death - FE01 (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+If the No Transfer at Death - Fixed account FE01 field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), PLDD No Transfer at Death - Fixed account FE01 (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+If the No Transfer at Death - Variable account FE01 field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), PLDD No Transfer at Death - Variable account FE01 (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+<h3>
+Relationships involving
+'PLDE' Claim Settlement Definition Record
+</h3>
+If the Life FE01 field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), PLDE Life FE01 (Field ID), and '02' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+If the Variable 1 - JE01 ID field is not spaces, the
+'JE' Coverage XML Name Information Table
+ is accessed.
+Use '0' (Queue), PLDE Variable 1 - JE01 ID (Field ID), and '01' (Sub ID) as the key to read the
+'JE' Coverage XML Name Information Table.
+
+<P>
+If the Variable 2 - JE01 ID field is not spaces, the
+'JE' Coverage XML Name Information Table
+ is accessed.
+Use '0' (Queue), PLDE Variable 2 - JE01 ID (Field ID), and '01' (Sub ID) as the key to read the
+'JE' Coverage XML Name Information Table.
+
+<P>
+If the Variable 3 - JE01 ID field is not spaces, the
+'JE' Coverage XML Name Information Table
+ is accessed.
+Use '0' (Queue), PLDE Variable 3 - JE01 ID (Field ID), and '01' (Sub ID) as the key to read the
+'JE' Coverage XML Name Information Table.
+
+<P>
+<h3>
+Relationships involving
+'PLDV' Variable Payout Control Record
+</h3>
+If the Payment option field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'POPT' (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+<h3>
+Relationships involving
+'PLEH' 7-Pay Premium per Unit Allocation Record
+</h3>
+If the Premium banding use field is '1', the
+'PLEI' 7-Pay Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLEI' 7-Pay Premium per Unit Banding Record.
+
+<P>
+If the Premium process key field is '05', the
+'PLEK' 7-Pay Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLEK' 7-Pay Premium Rating Table Record.
+
+<P>
+<h3>
+Relationships involving
+'PLEM' 7-Pay Waiver Premium per Unit Allocation Record
+</h3>
+If the Premium banding use field is '1', the
+'PLEN' 7-Pay Waiver Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLEN' 7-Pay Waiver Premium per Unit Banding Record.
+
+<P>
+If the Premium process key field is '05', the
+'PLEP' 7-Pay Waiver Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLEP' 7-Pay Waiver Premium Rating Table Record.
+
+<P>
+<h3>
+Relationships involving
+'PLFD' Mortality, Interest, and Lives Record
+</h3>
+If the Table Codes - Extended Term Insurance field is not spaces, the
+'QX' Mortality Table
+ is accessed.
+Use '0' (Queue), 'QXF' (Table type), PLFD Table Codes - Extended Term Insurance (Mortality Code), '1' (Lives), '1' (Decrement Type), INCL Sex code (Sex code), and INCL Issue age (Issue age) as the key to read the
+'QX' Mortality Table.
+
+<P>
+If the Table Codes - Net Single Premium field is not spaces, the
+'QX' Mortality Table
+ is accessed.
+Use '0' (Queue), 'QXF' (Table type), PLFD Table Codes - Net Single Premium (Mortality Code), '1' (Lives), '1' (Decrement Type), INCL Sex code (Sex code), and INCL Issue age (Issue age) as the key to read the
+'QX' Mortality Table.
+
+<P>
+If the ETI/RPU Table field is not spaces, the
+'ER' ETI/RPU Values Table
+ is accessed.
+Use '0' (Queue), first 3 positions of PLFD ETI/RPU Table (Table type), and last 2 positions of PLFD ETI/RPU Table (Subtype) as the key to read the
+'ER' ETI/RPU Values Table.
+
+<P>
+If the Illustration Control Fields - Mortality Table field is not spaces, the
+'QX' Mortality Table
+ is accessed.
+Use '0' (Queue), 'QXF' (Table type), PLFD Illustration Control Fields - Mortality Table (Mortality Code), '1' (Lives), '1' (Decrement Type), INCL Sex code (Sex code), and INCL Issue age (Issue age) as the key to read the
+'QX' Mortality Table.
+
+<P>
+If the Illustration Control Fields - Statement text ID field is not spaces, the
+'TX' Statement Text Table
+ is accessed.
+Use '0' (Queue), INCL Statement text ID (Text ID), and INCL SubID (Sub ID) as the key to read the
+'TX' Statement Text Table.
+
+<P>
+If the Illustration Control Fields - SubID field is not spaces, the
+'TX' Statement Text Table
+ is accessed.
+Use '0' (Queue), INCL Statement text ID (Text ID), and INCL SubID (Sub ID) as the key to read the
+'TX' Statement Text Table.
+
+<P>
+<h3>
+Relationships involving
+'PLFS' Policy Fees Record
+</h3>
+If the Policy fee calculation code field is not '001', the
+'MF' Mode Premium Factors Table
+ is accessed.
+Use '0' (Queue) and PLFS Policy fee calculation code (Calculation Argument) as the key to read the
+'MF' Mode Premium Factors Table.
+
+<P>
+<h3>
+Relationships involving
+'PLGC' SEC Guideline Premium Allocation Record
+</h3>
+If the Premium process key field is '05', the
+'PLGO' Guideline Level Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGO' Guideline Level Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLGM' Guideline Level Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGM' Guideline Level Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLGL' Guideline Level Premium per Unit Allocation Record
+</h3>
+If the Premium process key field is '05', the
+'PLGO' Guideline Level Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLGL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGO' Guideline Level Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLGM' Guideline Level Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLGL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGM' Guideline Level Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLGS' Guideline Single Premium per Unit Allocation Record
+</h3>
+If the Premium process key field is '05', the
+'PLGV' Guideline Single Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLGS_PlBenTyp (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGV' Guideline Single Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLGT' Guideline Single Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLGS_PlBenTyp (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLGT' Guideline Single Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLHD' Health Description Record
+</h3>
+If the Pending - Requirements field is not spaces, the
+'PLRP' Automatic Pending Requirements Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLRP' Automatic Pending Requirements Record.
+
+<P>
+If the Premium table field is not spaces, the
+'PLPA' Premium Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), PLHD Premium table and Variable-1 Codes - Access and ' ' (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLPA' Premium Allocation Record.
+
+<P>
+If the Smoker Data - Table field is not spaces, the
+'PLPA' Premium Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), PLHD Smoker Data - Table and Variable-1 Codes - Access and ' ' (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLPA' Premium Allocation Record.
+
+<P>
+<h3>
+Relationships involving
+'PLIA' Individual Access Record
+</h3>
+If the Use field is '6','8', or '9', the
+'MB' Mortality Adjustment Table
+ is accessed.
+Use '0' (Queue), first 3 positions of INCL Prog/Plan/Tbl Code (Table type), last 2 positions of INCL Prog/Plan/Tbl Code (Subtype), and INCL Issue age (Issue age) as the key to read the
+'MB' Mortality Adjustment Table.
+
+<P>
+If the Prog/Plan/Tbl Code field is not spaces, the
+'PD' Program and Table Description Table
+ is accessed.
+Use '0' (Queue), 'PGM' (Table type), '01' (Subtype), '   ' (Rec #), and INCL Prog/Plan/Tbl Code (Program name/table name) as the key to read the
+'PD' Program and Table Description Table.
+
+<P>
+<h3>
+Relationships involving
+'PLIE' Inherent Element Control Record
+</h3>
+If the Rating Reason field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'TREX' (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+<h3>
+Relationships involving
+'PLKC' Key Override Control Table Record
+</h3>
+If the Key Override Table(s) - Table Type field and Key Override Table(s) - Table Subtype field are not spaces, the
+'KO' Key Override Table
+ is accessed.
+Use '0' (Queue), PLKC Key Override Table(s) - Table Type (Table type), and PLKC Key Override Table(s) - Table Subtype (Subtype) as the key to read the
+'KO' Key Override Table.
+
+<P>
+<h3>
+Relationships involving
+'PLLP' Loans and Payments Control Record
+</h3>
+If the Loan Interest - Rate Table field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), PLLP Loan Interest - Rate Table (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'PLME' Mortality and Expense Charges Banding Record
+</h3>
+If the Pattern codes field is not spaces, the
+'MC' Class Code Selection Table
+ is accessed.
+Use '0' (Queue), 'MCS' (Table type), and '01' (Subtype) as the key to read the
+'MC' Class Code Selection Table.
+
+<P>
+<h3>
+Relationships involving
+'PLMP' Mode Premium Control Record
+</h3>
+If the Mode premium calc key field is not spaces, the
+'MF' Mode Premium Factors Table
+ is accessed.
+Use '0' (Queue) and PLMP Mode premium calc key (Calculation Argument) as the key to read the
+'MF' Mode Premium Factors Table.
+
+<P>
+<h3>
+Relationships involving
+'PLNF' Notification Control Record
+</h3>
+If the Notify Code Type field is '2', the
+'PLAG' Assembly Guide Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan code (Plan code), INCL Issue age (Issue age), '999999' (Thru duration), INCL Sex code (Sex code), and '1' (Document Type) as the key to read the
+'PLAG' Assembly Guide Record.
+
+<P>
+If the FE01 SubID field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'RMDN' (Field ID), and PLNF FE01 SubID (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+<h3>
+Relationships involving
+'PLNS' Notes Assignment Record
+</h3>
+If the Notes (Text Table ID) field and Notes (Text Table SubID) field are not spaces, the
+'TX' Statement Text Table
+ is accessed.
+Use '0' (Queue), PLNS Notes (Text Table ID) (Text ID), and PLNS Notes (Text Table SubID) (Sub ID) as the key to read the
+'TX' Statement Text Table.
+
+<P>
+<h3>
+Relationships involving
+'PLOA' Minimum Premium per Unit Allocation Record
+</h3>
+If the Premium process key field is '05', the
+'PLOT' Minimum Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLOA Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLOT' Minimum Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLOB' Minimum Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLOA Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLOB' Minimum Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLPA' Premium Allocation Record
+</h3>
+If the Premium process key field is '05', the
+'PLPT' Substandard Premium Rating Table Record
+ is accessed.
+Use PLPA Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLPT' Substandard Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLPB' Premium Banding Record
+ is accessed.
+Use PLPA Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLPB' Premium Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLPM' Multiple Premium Access Record
+</h3>
+If the Expanded Table ID field is not spaces, the
+'TP' Premium Select Rates Table
+ is accessed.
+Use '0' (Queue) and PLPM Expanded Table ID (Table ID) as the key to read the
+'TP' Premium Select Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'PLPP' Participation Processing Control Record
+</h3>
+If the Accounting Transactions - Div field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+If the Accounting Transactions - Cash Pmt field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+If the Accounting Transactions - Red Prem field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+If the Accounting Transactions - Div on Dep field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+If the Accounting Transactions - PUA field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+If the Accounting Transactions - OYT field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+If the Accounting Transactions - Prem Dep field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+If the Accounting Transactions - Red Loan field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+If the Accounting Transactions - Modal Div field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+If the Accounting Transactions - Pro-Rata Div field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+If the Paid Up Additions - Mortality Table field is not spaces, the
+'QX' Mortality Table
+ is accessed.
+Use '0' (Queue), 'QXF' (Table type), PLPP Paid Up Additions - Mortality Table (Mortality Code), '1' (Lives), '1' (Decrement Type), INCL Sex code (Sex code), and INCL Issue age (Issue age) as the key to read the
+'QX' Mortality Table.
+
+<P>
+If the One-Year Term - Mortality Table field is not spaces, the
+'QX' Mortality Table
+ is accessed.
+Use '0' (Queue), 'QXF' (Table type), PLPP One-Year Term - Mortality Table (Mortality Code), '1' (Lives), '1' (Decrement Type), INCL Sex code (Sex code), and INCL Issue age (Issue age) as the key to read the
+'QX' Mortality Table.
+
+<P>
+If the Loan Recognition - Div Int Rate field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), PLPP Loan Recognition - Div Int Rate (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Loan Recognition - Base Interest Rate field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), PLPP Loan Recognition - Base Interest Rate (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Table ID field is not spaces, the
+'PR' Participation Rates Table
+ is accessed.
+Use '0' (Queue), PLPP Table ID (Table ID), and INCL Issue age (Issue age) as the key to read the
+'PR' Participation Rates Table.
+
+<P>
+If the Accounting Transactions - Term Div field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+<h3>
+Relationships involving
+'PLRC' Required Contribution Premium per Unit Allocation Record
+</h3>
+If the Premium process key field is '05', the
+'PLRF' Required Contribution Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLRC Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLRF' Required Contribution Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLRD' Required Contribution Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLRC Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLRD' Required Contribution Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLRO' Return of Premium Record
+</h3>
+If the Interest table ID field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), PLRO Interest table ID (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Processing key field is '2', the
+'PLSC' Surrender Charge Definition Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSC' Surrender Charge Definition Record.
+
+<P>
+If the Premium Accumulation - Rule field is '2', '3' or '4', the
+'PLCF' Collection Fees Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCF' Collection Fees Record.
+
+<P>
+If the Premium Accumulation - Rule field is '2', '3' or '4', the
+'PLCT' State Premium Taxes Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLCT' State Premium Taxes Record.
+
+<P>
+If the Alternate Alloc ID field is not spaces, the
+'AM' Investment Allocation Model Table
+ is accessed.
+Use '0' (Queue), 'MDL' (Table type), '01' (Subtype), and INCL Alternate Alloc ID (Allocation model code) as the key to read the
+'AM' Investment Allocation Model Table.
+
+<P>
+If the Alternate Alloc ID field is not spaces, the
+'VF' Fixed Account Values Table
+ is accessed.
+Use '0' (Queue) and INCL Alternate Alloc ID (Account ID) as the key to read the
+'VF' Fixed Account Values Table.
+
+<P>
+If the Alternate Alloc ID field is not spaces, the
+'VU' Plan Definition of Variable Accounts Table
+ is accessed.
+Use '0' (Queue) and INCL Alternate Alloc ID (Account ID) as the key to read the
+'VU' Plan Definition of Variable Accounts Table.
+
+<P>
+<h3>
+Relationships involving
+'PLRP' Automatic Pending Requirements Record
+</h3>
+If the Require - Requirement Code field is not spaces, the
+'PX' Pending Requirements Table
+ is accessed.
+Use '0' (Queue), 'PXR' (Table type), and '01' (Subtype) as the key to read the
+'PX' Pending Requirements Table.
+
+<P>
+<h3>
+Relationships involving
+'PLRS' Reinstatement Record
+</h3>
+If the Interest Table field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), PLRS Interest Table (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'PLSC' Surrender Charge Definition Record
+</h3>
+If the Unit Charge - Code field is not spaces, the
+'PLSH' Surrender Charge per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSH' Surrender Charge per Unit Allocation Record.
+
+<P>
+If the Prorate annual fee field is not spaces, the
+'PLYF' Yearly Fees Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLYF' Yearly Fees Record.
+
+<P>
+If the Premium Charge - Use field is '2', the
+'PLPS' Premium Surrender Rates Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLPS' Premium Surrender Rates Table Record.
+
+<P>
+If the Premium Charge - Use field is '6', the
+'PLSM' Maximum Surrender Charge per Unit Allocation Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSM' Maximum Surrender Charge per Unit Allocation Record.
+
+<P>
+If the Premium Charge - Use field is '6', the
+'PLDC' Deferred Sales Charge Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLDC' Deferred Sales Charge Record.
+
+<P>
+If the Charges By Subsegment - Surrender Charge Ind field is '2', the
+'SS02' Display Surrender Charges by Subsegment Summary Table
+ is accessed.
+Use  as the key to read the
+'SS02' Display Surrender Charges by Subsegment Summary Table.
+
+<P>
+<h3>
+Relationships involving
+'PLSH' Surrender Charge per Unit Allocation Record
+</h3>
+If the Premium process key field is '05', the
+'PLSK' Surrender Charge Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSK' Surrender Charge Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLSI' Surrender Charge per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSI' Surrender Charge per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLSM' Maximum Surrender Charge per Unit Allocation Record
+</h3>
+If the Premium process key field is '05', the
+'PLSP' Maximum Surrender Charge Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSP' Maximum Surrender Charge Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLSN' Maximum Surrender Charge per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSN' Maximum Surrender Charge per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLSR' Full Surrender Fee Control Record
+</h3>
+If the Charge Code field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+<h3>
+Relationships involving
+'PLSW' Systematic Withdrawal Charges Record
+</h3>
+If the SEPP Mort ID field is not spaces, the
+'QX' Mortality Table
+ is accessed.
+Use '0' (Queue), 'QXF' (Mortality Code), PLSW SEPP Mort ID (Mortality Code), '1' (Lives), '1' (Decrement Type), INCL Sex code (Sex code), and INCL Issue age (Issue age) as the key to read the
+'QX' Mortality Table.
+
+<P>
+<h3>
+Relationships involving
+'PLTA' Target One Premium per Unit Allocation Record
+</h3>
+If the Premium process key field is '05', the
+'PLTD' Target One Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLTA Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLTD' Target One Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLTB' Target One Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), PLTA Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLTB' Target One Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLTE' Target Two Premium per Unit Allocation Record
+</h3>
+If the Premium process key field is '05', the
+'PLTH' Target Two Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLTH' Target Two Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLTF' Target Two Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLTF' Target Two Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLUE' User Edits Record
+</h3>
+If the Plan Code, Logic, or Module field is not spaces, the
+'PD' Program and Table Description Table
+ is accessed.
+Use '0' (Queue), 'PGM' (Table type), '01' (Subtype), '   ' (Rec #), and PLUE Plan Code, Logic, or Module (Program name/table name) as the key to read the
+'PD' Program and Table Description Table.
+
+<P>
+<h3>
+Relationships involving
+'PLUW' Underwriter Pending Requirement Record
+</h3>
+If the Req Code field is not spaces, the
+'PX' Pending Requirements Table
+ is accessed.
+Use '0' (Queue), 'PXR' (Table type), and '01' (Subtype) as the key to read the
+'PX' Pending Requirements Table.
+
+<P>
+If the Corr Code field is not spaces, the
+'NR' Required Notifications Reason Code Table
+ is accessed.
+Use '0' (Queue) and PLUW Corr Code (Reason code) as the key to read the
+'NR' Required Notifications Reason Code Table.
+
+<P>
+If the Connector One field is 'OLT', the
+'OL' Offer and Limit Table
+ is accessed.
+Use '0' (Queue), PLUW Connector Two (Table type), and '01' (Subtype) as the key to read the
+'OL' Offer and Limit Table.
+
+<P>
+If the Connector One field is 'HWT', the
+'HW' Height and Weight Table
+ is accessed.
+Use '0' (Queue), PLUW Connector Two (Table type), and '01' (Subtype) as the key to read the
+'HW' Height and Weight Table.
+
+<P>
+<h3>
+Relationships involving
+'PLVB' Separate Account Definition Record
+</h3>
+If the Account type code field is '5', the
+'AM' Investment Allocation Model Table
+ is accessed.
+Use '0' (Queue), 'MDL' (Table type), '01' (Subtype), and PLVB Account ID (Allocation model code) as the key to read the
+'AM' Investment Allocation Model Table.
+
+<P>
+If the Account type code field is '1' or '3' or '6' or '7' or '8' or 'A' or 'D', the
+'VF' Fixed Account Values Table
+ is accessed.
+Use '0' (Queue) and PLVB Account ID (Account ID) as the key to read the
+'VF' Fixed Account Values Table.
+
+<P>
+If the Account type code field is '2' or '4' or '9' , the
+'VU' Plan Definition of Variable Accounts Table
+ is accessed.
+Use '0' (Queue) and PLVB Account ID (Account ID) as the key to read the
+'VU' Plan Definition of Variable Accounts Table.
+
+<P>
+If the Deduction Allocation - Default field is 'I', the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'SPEC' (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+<h3>
+Relationships involving
+'PLVT' Value Tracking Rules Record
+</h3>
+If the Category field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'VTRK' (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+If the Interest table field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), PLVT Interest table (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Account ID field is not spaces, the
+'AM' Investment Allocation Model Table
+ is accessed.
+Use '0' (Queue), 'MDL' (Table type), '01' (Subtype), and PLVT Account ID (Allocation model code) as the key to read the
+'AM' Investment Allocation Model Table.
+
+<P>
+If the Account ID field is not spaces, the
+'VF' Fixed Account Values Table
+ is accessed.
+Use '0' (Queue) and PLVT Account ID (Account ID) as the key to read the
+'VF' Fixed Account Values Table.
+
+<P>
+If the Account ID field is not spaces, the
+'VU' Plan Definition of Variable Accounts Table
+ is accessed.
+Use '0' (Queue) and PLVT Account ID (Account ID) as the key to read the
+'VU' Plan Definition of Variable Accounts Table.
+
+<P>
+If the Credit Acct ID field is not spaces, the
+'AM' Investment Allocation Model Table
+ is accessed.
+Use '0' (Queue), 'MDL' (Table type), '01' (Subtype), and PLVT Credit Acct ID (Allocation model code) as the key to read the
+'AM' Investment Allocation Model Table.
+
+<P>
+If the Credit Acct ID field is not spaces, the
+'VF' Fixed Account Values Table
+ is accessed.
+Use '0' (Queue) and PLVT Credit Acct ID (Account ID) as the key to read the
+'VF' Fixed Account Values Table.
+
+<P>
+If the Credit Acct ID field is not spaces, the
+'VU' Plan Definition of Variable Accounts Table
+ is accessed.
+Use '0' (Queue) and PLVT Credit Acct ID (Account ID) as the key to read the
+'VU' Plan Definition of Variable Accounts Table.
+
+<P>
+<h3>
+Relationships involving
+'PLWC' Withdrawal Charges Record
+</h3>
+If the Surrender use field is '6' or '8', the
+'PLSC' Surrender Charge Definition Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLSC' Surrender Charge Definition Record.
+
+<P>
+If the Premium Charge - Use field is '2' or 'C', the
+'PLPS' Premium Surrender Rates Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLPS' Premium Surrender Rates Table Record.
+
+<P>
+If the Surrender use field is '5', the
+'SS' Surrender Charges by Subsegment Table
+ is accessed.
+Use '0' (Queue) as the key to read the
+'SS' Surrender Charges by Subsegment Table.
+
+<P>
+<h3>
+Relationships involving
+'PLWD' Withdrawal Fees Record
+</h3>
+If the Financial - Charge Code field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+<h3>
+Relationships involving
+'PLWL' Waiver Guideline Level Premium per Unit Allocation Record
+</h3>
+If the Premium process key field is '05', the
+'PLWO' Waiver Guideline Level Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLWO' Waiver Guideline Level Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLWM' Waiver Guideline Level Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLWM' Waiver Guideline Level Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLWP' Withdrawal Benefit Processing Rules Record
+</h3>
+If the Lifetime Distribution Factor field is not spaces, the
+'WF' Withdrawal Benefit Distribution Factor Table
+ is accessed.
+Use '0' (Queue), PLWP Lifetime Distribution Factor (Table Type), and '01' (Subtype) as the key to read the
+'WF' Withdrawal Benefit Distribution Factor Table.
+
+<P>
+If the Term Distribution Factor Table field is not spaces, the
+'WF' Withdrawal Benefit Distribution Factor Table
+ is accessed.
+Use '0' (Queue), PLWP Term Distribution Factor Table (Table Type), and '01' (Subtype) as the key to read the
+'WF' Withdrawal Benefit Distribution Factor Table.
+
+<P>
+If the Bonus - Table Type field is not spaces, the
+'WF' Withdrawal Benefit Distribution Factor Table
+ is accessed.
+Use '0' (Queue), PLWP Bonus - Table Type (Table Type), and '01' (Subtype) as the key to read the
+'WF' Withdrawal Benefit Distribution Factor Table.
+
+<P>
+If the Premium Roll-Up Step-Up - Interest Table ID field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), PLWP Premium Roll-Up Step-Up - Interest Table ID (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'PLWS' Waiver Guideline Single Premium per Unit Allocation Record
+</h3>
+If the Premium process key field is '05', the
+'PLWV' Waiver Guideline Single Premium Rating Table Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLWV' Waiver Guideline Single Premium Rating Table Record.
+
+<P>
+If the Premium banding use field is '1', the
+'PLWT' Waiver Guideline Single Premium per Unit Banding Record
+ is accessed.
+Use INCL Queue (Queue), INCL Plan type (Plan type), INCL Plan code (Plan code), INCL Benefit type (Benefit type), and INCL Issue age (Issue age) as the key to read the
+'PLWT' Waiver Guideline Single Premium per Unit Banding Record.
+
+<P>
+<h3>
+Relationships involving
+'PLXC' Transfer Charges Record
+</h3>
+If the Financial - Charge Code field is not spaces, the
+'AN' Account Number Assignments Table
+ is accessed.
+Use '0' (Queue), 'ANT' (Table type), and '01' (Subtype) as the key to read the
+'AN' Account Number Assignments Table.
+
+<P>
+<h3>
+Relationships involving
+'PLXL' XML File Coverage Options Record
+</h3>
+If the UQ01 Table ID field is not spaces, the
+'UQ' Question Table
+ is accessed.
+Use '0' (Queue), PLXL UQ01 Table ID (Table type), and '01' (Subtype) as the key to read the
+'UQ' Question Table.
+
+<P>
+If the UQ01 Table ID field is not spaces, the
+'UQ' Question Table
+ is accessed.
+Use '0' (Queue), PLXL UQ01 Table ID (Table type), and '01' (Subtype) as the key to read the
+'UQ' Question Table.
+
+<P>
+<h3>
+Relationships involving
+'AI' Automatic At-Issue Accounting Table
+</h3>
+If the Group error report ID field is not spaces, the
+Report Characteristics Table Record
+ is accessed.
+Use '0' (Queue) and AI01 Group error report ID (Report ID) as the key to read the
+Report Characteristics Table Record.
+
+<P>
+<h3>
+Relationships involving
+'AM' Investment Allocation Model Table
+</h3>
+If the Account ID field is not spaces, the
+'VF' Fixed Account Values Table
+ is accessed.
+Use '0' (Queue) and AM01 Account ID (Account ID) as the key to read the
+'VF' Fixed Account Values Table.
+
+<P>
+If the Account ID field is not spaces, the
+'VU' Plan Definition of Variable Accounts Table
+ is accessed.
+Use '0' (Queue) and AM01 Account ID (Account ID) as the key to read the
+'VU' Plan Definition of Variable Accounts Table.
+
+<P>
+<h3>
+Relationships involving
+'AN' Account Number Assignments Table
+</h3>
+If the CB Sw field is not spaces, the
+'BS' Cost Basis Effect Table
+ is accessed.
+Use '0' (Queue), 'BSF' (Table type), '01' (Subtable), and '1' (Tax code) as the key to read the
+'BS' Cost Basis Effect Table.
+
+<P>
+<h3>
+Relationships involving
+'AX' Contract Accounting XML Information Table
+</h3>
+If the Offsets field is not spaces, the
+'TM' Accounting Transaction Processing Module Table
+ is accessed.
+Use '0' (Queue), 'TMD' (Table type), and '00' (Subtype) as the key to read the
+'TM' Accounting Transaction Processing Module Table.
+
+<P>
+<h3>
+Relationships involving
+'BA' Total Shares Per Fund Table
+</h3>
+If the Account ID field is not spaces, the
+'VF' Fixed Account Values Table
+ is accessed.
+Use '0' (Queue) and BA01 Account ID (Account ID) as the key to read the
+'VF' Fixed Account Values Table.
+
+<P>
+If the Account ID field is not spaces, the
+'VU' Plan Definition of Variable Accounts Table
+ is accessed.
+Use '0' (Queue) and BA01 Account ID (Account ID) as the key to read the
+'VU' Plan Definition of Variable Accounts Table.
+
+<P>
+<h3>
+Relationships involving
+'BP' Bonus Payment Table (AMS)
+</h3>
+If the Exclude Table field is not spaces, the
+'GI' Plan Include/Exclude Table (AMS)
+ is accessed.
+Use '0' (Queue), first 3 positions of BP01 Exclude Table (Table type), and last 2 positions of BP01 Exclude Table (Subtype) as the key to read the
+'GI' Plan Include/Exclude Table (AMS).
+
+<P>
+If the Credit Tran field is not spaces, the
+'GA' Agent Account Number Assignment Table
+ is accessed.
+Use '0' (Queue), 'GAN' (Table type), and '01' (Subtype) as the key to read the
+'GA' Agent Account Number Assignment Table.
+
+<P>
+If the Debit Tran field is not spaces, the
+'GA' Agent Account Number Assignment Table
+ is accessed.
+Use '0' (Queue), 'GAN' (Table type), and '01' (Subtype) as the key to read the
+'GA' Agent Account Number Assignment Table.
+
+<P>
+<h3>
+Relationships involving
+'BQ' Bonus Qualification Table (AMS)
+</h3>
+If the Include Table field is not spaces, the
+'GI' Plan Include/Exclude Table (AMS)
+ is accessed.
+Use '0' (Queue), first 3 positions of BQ01 Include Table (Table type), and last 2 positions of BQ01 Include Table (Subtype) as the key to read the
+'GI' Plan Include/Exclude Table (AMS).
+
+<P>
+If the Exclude Table field is not spaces, the
+'GI' Plan Include/Exclude Table (AMS)
+ is accessed.
+Use '0' (Queue), first 3 positions of BQ01 Exclude Table (Table type), and last 2 positions of BQ01 Exclude Table (Subtype) as the key to read the
+'GI' Plan Include/Exclude Table (AMS).
+
+<P>
+If the Payment Table field is not spaces, the
+'BP' Bonus Payment Table (AMS)
+ is accessed.
+Use '0' (Queue), first 3 positions of BQ01 Payment Table (Table type), and last 2 positions of BQ01 Payment Table (Subtype) as the key to read the
+'BP' Bonus Payment Table (AMS).
+
+<P>
+If the Credit Tran field is not spaces, the
+'GA' Agent Account Number Assignment Table
+ is accessed.
+Use '0' (Queue), 'GAN' (Table type), and '01' (Subtype) as the key to read the
+'GA' Agent Account Number Assignment Table.
+
+<P>
+If the Debit Tran field is not spaces, the
+'GA' Agent Account Number Assignment Table
+ is accessed.
+Use '0' (Queue), 'GAN' (Table type), and '01' (Subtype) as the key to read the
+'GA' Agent Account Number Assignment Table.
+
+<P>
+<h3>
+Relationships involving
+'CW' Cash with Application Accounting Table
+</h3>
+If the Trans code field is not spaces, the
+'TM' Accounting Transaction Processing Module Table
+ is accessed.
+Use '0' (Queue), 'TMD' (Table type), and '00' (Subtype) as the key to read the
+'TM' Accounting Transaction Processing Module Table.
+
+<P>
+<h3>
+Relationships involving
+'CY' Multi-tier NLG Testing Variables Table
+</h3>
+If the BQTE IN01 field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), CY01 BQTE IN01 (Table type), and '01' (Subtype) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Tier IN01 field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), CY01 Tier IN01 (Table type), and '01' (Subtype) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Paid Prem Lmt Tbl field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), CY01 Paid Prem Lmt Tbl (Table type), and '01' (Subtype) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'DI02' Display Death Claim State Summary Table
+</h3>
+If the Rate Code One field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), DI02 Rate Code One (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Rate Code Two field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), DI02 Rate Code Two (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Rate Code Three field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), DI02 Rate Code Three (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'DI' Death Claim State Rules Table
+</h3>
+If the Rate Code One field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), DI01 Rate Code One (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Rate Code Two field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), DI01 Rate Code Two (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Rate Code Three field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), DI01 Rate Code Three (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'DS' Suspense Account Description Table
+</h3>
+If the Rept ID field is not spaces, the
+Report Characteristics Table Record
+ is accessed.
+Use '0' (Queue) and DS01 Rept ID (Report ID) as the key to read the
+Report Characteristics Table Record.
+
+<P>
+If the Special Module field is not spaces, the
+'PD' Program and Table Description Table
+ is accessed.
+Use '0' (Queue), 'PGM' (Table type), '01' (Subtype), '   ' (Rec #), and DS01 Special Module (Program name/table name) as the key to read the
+'PD' Program and Table Description Table.
+
+<P>
+<h3>
+Relationships involving
+'EV' Event Control Table
+</h3>
+If the Notify Code field is not spaces, and the Notify Use field is 'G', the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'GNOT' (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+<h3>
+Relationships involving
+'FV' Fund Validation Table
+</h3>
+If the Fund Table Type field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), FV01 Fund Table Type (Field ID), and FV01 Fund Table Subtype (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+If the Minimum/Maximum Use Code field is '4', the
+'FX' Fund Validation Groupings Table
+ is accessed.
+Use '0' (Queue), FV01 Table Type (Table Type), and '01' (Subtype) as the key to read the
+'FX' Fund Validation Groupings Table.
+
+<P>
+<h3>
+Relationships involving
+'GI' Plan Include/Exclude Table (AMS)
+</h3>
+If the Include Table field is not spaces, the
+'GI' Plan Include/Exclude Table (AMS)
+ is accessed.
+Use '0' (Queue), first 3 positions of GI01 Include Table (Table type), and last 2 positions of GI01 Include Table (Subtype) as the key to read the
+'GI' Plan Include/Exclude Table (AMS).
+
+<P>
+<h3>
+Relationships involving
+'GR' Periodic and Ad Hoc Reporting Table (AMS)
+</h3>
+If the Report ID field is not spaces, the
+Report Characteristics Table Record
+ is accessed.
+Use '0' (Queue) and GR01 Report ID (Report ID) as the key to read the
+Report Characteristics Table Record.
+
+<P>
+If the Program Name field is not spaces, the
+'PD' Program and Table Description Table
+ is accessed.
+Use '0' (Queue), 'PGM' (Table type), '01' (Subtype), '   ' (Rec #), and GR01 Program Name (Program name/table name) as the key to read the
+'PD' Program and Table Description Table.
+
+<P>
+<h3>
+Relationships involving
+'HR' Group Rate Override Table
+</h3>
+If the 'PA' override field is not spaces, the
+'PLPA' Premium Allocation Record
+ is accessed.
+Use '0' (Queue), 'C' (Plan type), HR01 'PA' override (Plan code), ' ' (Benefit type), and ' ' (Issue age) as the key to read the
+'PLPA' Premium Allocation Record.
+
+<P>
+If the 'OA' override field is not spaces, the
+'PLOA' Minimum Premium per Unit Allocation Record
+ is accessed.
+Use '0' (Queue), 'C' (Plan type), HR01 'OA' override (Plan code), ' ' (Benefit type), and ' ' (Issue age) as the key to read the
+'PLOA' Minimum Premium per Unit Allocation Record.
+
+<P>
+If the 'TA' override field is not spaces, the
+'PLTA' Target One Premium per Unit Allocation Record
+ is accessed.
+Use '0' (Queue), 'C' (Plan type), HR01 'TA' override (Plan code), ' ' (Benefit type), and ' ' (Issue age) as the key to read the
+'PLTA' Target One Premium per Unit Allocation Record.
+
+<P>
+If the 'SH' override field is not spaces, the
+'PLSH' Surrender Charge per Unit Allocation Record
+ is accessed.
+Use '0' (Queue), 'C' (Plan type), HR01 'SH' override (Plan code), ' ' (Benefit type), and ' ' (Issue age) as the key to read the
+'PLSH' Surrender Charge per Unit Allocation Record.
+
+<P>
+<h3>
+Relationships involving
+'IN' Interest Rates Table
+</h3>
+If the Alternate Table Use Code field is '1','2','3', or '4', the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), IN01 Alternate Table Type (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Alternate Table Use Code field is '7', the
+'IB' Enhanced Interest Rate Table
+ is accessed.
+Use '0' (Queue), IN01 Alternate Table Type (Table type), and '01' (Subtype) as the key to read the
+'IB' Enhanced Interest Rate Table.
+
+<P>
+If the Guar Min Table - Type field is not spaces, the
+'IG' Guaranteed Minimum Interest Rate Table
+ is accessed.
+Use '0' (Queue), IN01 Guar Min Table - Type (Table type), and '01' (Subtype) as the key to read the
+'IG' Guaranteed Minimum Interest Rate Table.
+
+<P>
+<h3>
+Relationships involving
+'KO' Key Override Table
+</h3>
+If the Record codes to direct field is not spaces, the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'TRKO' (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+If the Feature Code field is not spaces, the
+'KM' Key Override ME Pattern Code Table
+ is accessed.
+Use '0' (Queue), KO01 Table type (Table type), and KO01 Subtype (Subtype) as the key to read the
+'KM' Key Override ME Pattern Code Table.
+
+<P>
+<h3>
+Relationships involving
+'LI' License Renewal Processing Rules Table (AMS)
+</h3>
+If the Contact Code field is not spaces, the
+'GD' General Description Table
+ is accessed.
+Use '0' (Queue), 'LIR' (Table type), and '01' (Subtype) as the key to read the
+'GD' General Description Table.
+
+<P>
+<h3>
+Relationships involving
+'MC' Class Code Selection Table
+</h3>
+If the Class Code field is not spaces, the
+'OI' Override Interest Table
+ is accessed.
+Use '0' (Queue), MC01 Class Code (Table type), and '01' (Subtype) as the key to read the
+'OI' Override Interest Table.
+
+<P>
+<h3>
+Relationships involving
+'MF' Mode Premium Factors Table
+</h3>
+If the Calculation Argument field is not spaces, the
+'MF' Mode Premium Factors Summary Table
+ is accessed.
+Use '0' (Queue) and MF01 Calculation Argument (Calculation Argument) as the key to read the
+'MF' Mode Premium Factors Summary Table.
+
+<P>
+<h3>
+Relationships involving
+'ML' Message ID List Table
+</h3>
+If the Program field is not spaces, the
+'PD' Program and Table Description Table
+ is accessed.
+Use '0' (Queue), 'PGM' (Table type), '01' (Subtype), '   ' (Rec #), and ML01 Program (Program name/table name) as the key to read the
+'PD' Program and Table Description Table.
+
+<P>
+If the Project Number field is not spaces, the
+'REAC' Maintain REACT Control Record
+ is accessed.
+Use ML01 Project Number (Project) as the key to read the
+'REAC' Maintain REACT Control Record.
+
+<P>
+<h3>
+Relationships involving
+'MT' Processing Control Module Lists Table
+</h3>
+If the Module name field is not spaces, the
+'PD' Program and Table Description Table
+ is accessed.
+Use '0' (Queue), 'PGM' (Table type), '01' (Subtype), '   ' (Rec #), and MT01 Module name (Program name/table name) as the key to read the
+'PD' Program and Table Description Table.
+
+<P>
+<h3>
+Relationships involving
+'NG' Treaty Country Withholding Table
+</h3>
+If the Country code field is not spaces, the
+'ST' State Codes and Names Table
+ is accessed.
+Use '0' (Queue), 'STA' (Table type), and '01' (Subtype) as the key to read the
+'ST' State Codes and Names Table.
+
+<P>
+<h3>
+Relationships involving
+'NR' Required Notifications Reason Code Table
+</h3>
+If the Notification use code field is '2', the
+'PLAG' Assembly Guide Record
+ is accessed.
+Use '0' (Queue), NR01 Reason code (Plan code), '00' (Issue age), '999999' (Thru duration), '1' (Sex code), and '1' (Document Type) as the key to read the
+'PLAG' Assembly Guide Record.
+
+<P>
+<h3>
+Relationships involving
+'NT' Note Table
+</h3>
+If the Default Print To field is not spaces, the
+'GD' General Description Table
+ is accessed.
+Use '0' (Queue), 'NPR' (Table type), and '01' (Subtype) as the key to read the
+'GD' General Description Table.
+
+<P>
+If the Report ID field is not spaces, the
+Report Characteristics Table Record
+ is accessed.
+Use '0' (Queue) and NT01 Report ID (Report ID) as the key to read the
+Report Characteristics Table Record.
+
+<P>
+<h3>
+Relationships involving
+'OI' Override Interest Table
+</h3>
+If the Guaranteed use field is not spaces, the
+'ES' Equity Indexed Participation Rate Table
+ is accessed.
+Use '0' (Queue), '   ' (Table type), and '  ' (Subtype) as the key to read the
+'ES' Equity Indexed Participation Rate Table.
+
+<P>
+If the Reinvest Indicator field is '2' or '3', the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'FFSR' (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+If the Reinvest Indicator field is '5', the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'FFR1' (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+If the Reinvest Indicator field is '8', the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'FFRA' (Field ID), and '01' (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+If the AT Type field is not spaces, the
+'AT' Account Type Table
+ is accessed.
+Use '0' (Queue), 'ATT' (Table type), and '01' (Subtype) as the key to read the
+'AT' Account Type Table.
+
+<P>
+If the New money rate code field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), OI01 New money rate code (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Old money rate code field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), OI01 Old money rate code (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'OR' Bonus Rate Override Table
+</h3>
+If the New Money Rate Code field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), OR01 New Money Rate Code (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Old money rate code field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), OR01 Old money rate code (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'OV' Agent Level Override Data Table
+</h3>
+If the Rate Override Table field is not spaces, the
+'OR' Bonus Rate Override Table
+ is accessed.
+Use '0' (Queue), 'ORT' (Table type), '01' (Subtype), and OV01 Rate Override Table (ID) as the key to read the
+'OR' Bonus Rate Override Table.
+
+<P>
+If the Comm Override Table field is not spaces, the
+'OM' Commission Override Data table
+ is accessed.
+Use '0' (Queue), 'OMT' (Table type), '01' (Subtype), and OV01 Comm Override Table (ID) as the key to read the
+'OM' Commission Override Data table.
+
+<P>
+<h3>
+Relationships involving
+'PG' Group Billing Premium/Reminder/Lapse Billing Table
+</h3>
+If the Report ID field is not spaces, the
+Report Characteristics Table Record
+ is accessed.
+Use '0' (Queue) and PG01 Report ID (Report ID) as the key to read the
+Report Characteristics Table Record.
+
+<P>
+<h3>
+Relationships involving
+'PN' Premium Notice Billing Table
+</h3>
+If the Report ID field is not spaces, the
+Report Characteristics Table Record
+ is accessed.
+Use '0' (Queue) and PN01 Report ID (Report ID) as the key to read the
+Report Characteristics Table Record.
+
+<P>
+If the Suspense control number field is not spaces, the
+'DS' Suspense Account Description Table
+ is accessed.
+Use '0' (Queue), 'SAD' (Table type), and '01' (Subtype) as the key to read the
+'DS' Suspense Account Description Table.
+
+<P>
+<h3>
+Relationships involving
+'PU' Proposal/Reproposal Event Definition Table
+</h3>
+If the Called module field is not spaces, the
+'PD' Program and Table Description Table
+ is accessed.
+Use '0' (Queue), 'PGM' (Table type), '01' (Subtype), '   ' (Rec #), and PU01 Called module (Program name/table name) as the key to read the
+'PD' Program and Table Description Table.
+
+<P>
+<h3>
+Relationships involving
+'QP' Qualified Processing Rules Table
+</h3>
+If the Excess Contribution - Report ID field is not spaces, the
+Report Characteristics Table Record
+ is accessed.
+Use '0' (Queue) and QP01 Excess Contribution - Report ID (Report ID) as the key to read the
+Report Characteristics Table Record.
+
+<P>
+<h3>
+Relationships involving
+'ST' State Codes and Names Table
+</h3>
+If the Zip Code Indicator field is '2', the
+'ZP' Zip Code Ranges Table
+ is accessed.
+Use '0' (Queue), 'ZIP' (Table type), and '01' (Subtype) as the key to read the
+'ZP' Zip Code Ranges Table.
+
+<P>
+<h3>
+Relationships involving
+'TM' Accounting Transaction Processing Module Table
+</h3>
+If the Program name field is not spaces, the
+'PD' Program and Table Description Table
+ is accessed.
+Use '0' (Queue), 'PGM' (Table type), '01' (Subtype), '   ' (Rec #), and TM01 Program name (Program name/table name) as the key to read the
+'PD' Program and Table Description Table.
+
+<P>
+<h3>
+Relationships involving
+'VC' Commission Advancing Rules Table (AMS)
+</h3>
+If the Interest Table field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), VC01 Interest Table (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'VF' Fixed Account Values Table
+</h3>
+If the Old Money Rate Code field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), VF01 Old Money Rate Code (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the New Money Rate Code field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), VF01 New Money Rate Code (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Equity Index Table Key field is not spaces, the
+'EQ' Equity Index Table
+ is accessed.
+Use '0' (Queue), VF01 Equity Index Table Key (Table type), and '01' (Subtype) as the key to read the
+'EQ' Equity Index Table.
+
+<P>
+If the Par Rate Table Key field is not spaces, the
+'ES' Equity Indexed Participation Rate Table
+ is accessed.
+Use '0' (Queue), VF01 Par Rate Table Key (Table type), and '01' (Subtype) as the key to read the
+'ES' Equity Indexed Participation Rate Table.
+
+<P>
+If the MVA indicator field is '1', the
+'VX' Market Value Adjustment (MVA) Rules Table
+ is accessed.
+Use '0' (Queue) and VF01 Account ID (Account ID) as the key to read the
+'VX' Market Value Adjustment (MVA) Rules Table.
+
+<P>
+If the Interest Override Table field is not spaces, the
+'OI' Override Interest Table
+ is accessed.
+Use '0' (Queue), VF01 Interest Override Table (Table type), and '01' (Subtype) as the key to read the
+'OI' Override Interest Table.
+
+<P>
+<h3>
+Relationships involving
+'VM' Miscellaneous Accounts Table
+</h3>
+If the New Rate field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), VM01 New Rate (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Old Rate field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), VM01 Old Rate (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+<h3>
+Relationships involving
+'VN' Actuarial Guideline 33 Table
+</h3>
+If the Crediting Rate Code field is not spaces, the
+'IN' Interest Rates Table
+ is accessed.
+Use '0' (Queue), VN01 Crediting Rate Code (Table type), and '01' (Duration) as the key to read the
+'IN' Interest Rates Table.
+
+<P>
+If the Elective Valuation Rates - Table field is not spaces, the
+'VV' CARVM Valuation Interest Rules Table
+ is accessed.
+Use '0' (Queue) and VN01 Elective Valuation Rates - Table (Table ID) as the key to read the
+'VV' CARVM Valuation Interest Rules Table.
+
+<P>
+If the Non-Elective Valuation Rates - Table field is not spaces, the
+'VV' CARVM Valuation Interest Rules Table
+ is accessed.
+Use '0' (Queue) and VN01 Non-Elective Valuation Rates - Table (Table ID) as the key to read the
+'VV' CARVM Valuation Interest Rules Table.
+
+<P>
+<h3>
+Relationships involving
+'VP' Varying Premium Processing Table
+</h3>
+If the Program name field is not spaces, the
+'PD' Program and Table Description Table
+ is accessed.
+Use '0' (Queue), 'PGM' (Table type), '01' (Subtype), '   ' (Rec #), and VP01 Program name (Program name/table name) as the key to read the
+'PD' Program and Table Description Table.
+
+<P>
+<h3>
+Relationships involving
+'VR' Valuation Run Control Table
+</h3>
+If the Module Name field is not spaces, the
+'PD' Program and Table Description Table
+ is accessed.
+Use '0' (Queue), 'PGM' (Table type), '01' (Subtype), '   ' (Rec #), and VR01 Module Name (Program name/table name) as the key to read the
+'PD' Program and Table Description Table.
+
+<P>
+<h3>
+Relationships involving
+'VS' Vesting Module Table (AMS)
+</h3>
+If the Proc Rule field is not spaces, the
+'GD' General Description Table
+ is accessed.
+Use '0' (Queue), 'VST' (Table type), and '01' (Subtype) as the key to read the
+'GD' General Description Table.
+
+<P>
+If the Processing Module field is not spaces, the
+'PD' Program and Table Description Table
+ is accessed.
+Use '0' (Queue), 'PGM' (Table type), '01' (Subtype), '   ' (Rec #), and VS01 Processing Module (Program name/table name) as the key to read the
+'PD' Program and Table Description Table.
+
+<P>
+If the Credit Code field is not spaces, the
+'GA' Agent Account Number Assignment Table
+ is accessed.
+Use '0' (Queue), 'GAN' (Table type), and '01' (Subtype) as the key to read the
+'GA' Agent Account Number Assignment Table.
+
+<P>
+If the Debit Code field is not spaces, the
+'GA' Agent Account Number Assignment Table
+ is accessed.
+Use '0' (Queue), 'GAN' (Table type), and '01' (Subtype) as the key to read the
+'GA' Agent Account Number Assignment Table.
+
+<P>
+<h3>
+Relationships involving
+'VU' Plan Definition of Variable Accounts Table
+</h3>
+If the Method code field is '1', the
+'MC' Class Code Selection Table
+ is accessed.
+Use '0' (Queue), 'MCS' (Table type), and '01' (Subtype) as the key to read the
+'MC' Class Code Selection Table.
+
+<P>
+If the Sep Acct Table Type field is not spaces, the
+'AV02' Maintain Unit Rates Summary Table
+ is accessed.
+Use '0' (Queue), VU01 Account ID (Account ID), VU01 Sep Acct Table Type (Table type), and '01' (Subtype) as the key to read the
+'AV02' Maintain Unit Rates Summary Table.
+
+<P>
+If the Old Money Rate code field is not spaces, the
+'AV02' Maintain Unit Rates Summary Table
+ is accessed.
+Use '0' (Queue), VU01 Account ID (Account ID), VU01 Old Money Rate code (Table type), and '01' (Subtype) as the key to read the
+'AV02' Maintain Unit Rates Summary Table.
+
+<P>
+<h3>
+Relationships involving
+'VW' W-I-M-M Assumptions Table
+</h3>
+If the Table ID Mortality field is not spaces, the
+'QX' Mortality Table
+ is accessed.
+Use '0' (Queue), 'QXF' (Table type), VW01 Table ID Mortality (Mortality Code), '1' (Lives), '1' (Decrement Type), and '3' (Sex code) as the key to read the
+'QX' Mortality Table.
+
+<P>
+<h3>
+Relationships involving
+'VX' Market Value Adjustment (MVA) Rules Table
+</h3>
+If the Transaction type field is not spaces, the
+'AT' Account Type Table
+ is accessed.
+Use '0' (Queue), 'ATT' (Table type), and '01' (Subtype) as the key to read the
+'AT' Account Type Table.
+
+<P>
+If the Index table key field is not spaces, the
+'EQ' Equity Index Table
+ is accessed.
+Use '0' (Queue), VX01 Index table key (Table type), and '01' (Subtype) as the key to read the
+'EQ' Equity Index Table.
+
+<P>
+If the Calculation type field is '2' or '3', the
+'FE' Field Edits Table
+ is accessed.
+Use '0' (Queue), 'MVAF' (Field ID), and VX01  and Calculation type and  (SubID) as the key to read the
+'FE' Field Edits Table.
+
+<P>
+<h3>
+Relationships involving
+'UQ' Question Table
+</h3>
+If the US Table Type field is not spaces, the
+'US' Subquestion Table
+ is accessed.
+Use '0' (Queue), UQ01 US Table Type (Table type), and '01' (Subtype) as the key to read the
+'US' Subquestion Table.
+
+<P>
+<h3>
+Relationships involving
+'US' Subquestion Table
+</h3>
+If the UL Table Type field is not spaces, the
+'UL' Condition List Table
+ is accessed.
+Use '0' (Queue), US01 UL Table Type (Table type), and '01' (Subtype) as the key to read the
+'UL' Condition List Table.
+
+<P>
+</body>
+</html>
