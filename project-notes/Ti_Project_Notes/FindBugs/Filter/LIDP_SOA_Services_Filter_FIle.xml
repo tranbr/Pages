@@ -1,0 +1,23 @@
+<FindBugsFilter>   
+   <!-- WebLog.java: method listLogs(), line 41
+     
+     ================================================
+     Bug: Possible null pointer dereference in com.lidp.services.WebLog.Process.WebLog.listLogs(String) due to return value of called method
+
+     The return value from a method is dereferenced without a null check, and the return value of that method is one that should generally be checked for null. This may lead to a NullPointerException when the code is executed. 
+
+     Rank: Troubling (13), confidence: Normal
+     Pattern: NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE 
+     Type: NP, Category: STYLE (Dodgy code)
+
+     ================================================
+      
+     listFiles() will only return null if the specified File object is not a directory. Because of the preceding if-statement it will always be a directory.
+   -->
+   <Match>
+      <Class name="com.lidp.services.WebLog.Process.WebLog" />
+      <Method name="listLogs" />
+      <Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE" />
+   </Match>
+
+</FindBugsFilter>

@@ -1,0 +1,44 @@
+Setup for Policy Exhibit testing
+segrma – 3/17/14
+
+1. Backup ADBTRAC, ADBTDAC, ADBTBAC, ADBTCAC with _backup appended to the end of each file and place in dated folder
+
+2. (optional) Clear TDAC, TBAC, TCAC
+
+2. Capture the TRAC to the TDAC*
+	1. Run SWTCTEST in the JEM TEST screen
+	1. This calls SWTC10 to extract TRAC and copy to TDAC
+*Note: This step is temporary as this is a substitute for steps that will happen at close and within 24/7
+
+3. Go to the Database Development tool
+
+4. Right click ADBTDAC select Data and Extract without _backup and place in dated folder
+	1. If this is the second time through append _2 to the end of the file
+
+5. Right click ADBTBAC select Data and Load
+
+6. Check the Replace existing data check box
+
+7. Load the ADBTDAC file
+
+8. Backup ADBPEAC with _backup appended to the end of the file and place in dated folder
+
+9. Clear ADBPEAC with database query: delete from ADBPEAC
+
+10. Allow test data to be processed
+
+11. Repeat steps 2 - 4
+
+12. Right click ADBTCAC select Data and Load
+
+13. Check the Replace existing data check box
+
+14. Load the ADBTDAC_2 file
+
+15. Right click ADBPEAC select Data and Extract without _backup and place in dated folder
+
+16. Right click ADBMPAC select Data and Load
+
+17. Check the Replace existing data check box
+
+18. Load the ADBPEAC file

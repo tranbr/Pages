@@ -1,0 +1,592 @@
+								DOCUMENTATION STANDARDS
+----------------------------------------------------------------------------------------------
+Reviewed/Updated 09/01/2017 
+-------------------------------------------------------------------------------------------
+Javadoc- Updated: 2016-08-04
+
+	- We use javadoc to document our programs in Titainum. We have templates for 
+	documentation on programs or utilities. It is important to follow this format
+	because the javadoc will be viewable on the online documentation.
+	
+	- NOTE: The formatter will break apart the list tags, 
+	        which works fine but doesn't look as nice.
+
+
+EXAMPLE: Utility javadoc template
+---------------------------------
+/**
+ * <h1>Name of Utility</h1>
+ * <ul><li>Short description of what occurs in the program.</li></ul>
+ * <h2>Functions:</h2>
+ * <ul><li>List of functions supported by utility</li></ul>
+ * <h2>Required Objects:</h2>
+ * <ul><li>Objects required by utility</li></ul>
+ * <h2>Preset:</h2>
+ * <ul><li>Input variables to be set</li></ul>
+ * <h2>Return Codes:</h2>
+ * <ul><li>List of possible</li>
+ * <li>return codes</li></ul>
+ */
+  
+EXAMPLE: Program javadoc template
+---------------------------------
+/**
+ * <h1>Insert Program Title Here</h1>          
+ * <h2>Purpose:</h2>                            
+ * <ul><li>Short description of what occurs in the program.</li></ul>  
+ * <h2>Input Tables:</h2>
+ * <ul><li>List your inputs, if applicable</li></ul>
+ * <h2>Output Tables:</h2>
+ * <ul><li>List your outputs, if applicable</li></ul>
+ * <h2>Parameters:</h2>
+ * <ul><li>{@linkplain Name_of_Parameter_to_be_linked_to}</li>
+ * <li>{@linkplain Parameter2}</li></ul>
+ 	//note: omit the {@linkplain } if you're not linking to something from our structure like user input data.
+ * <h2>Return Codes:</h2>
+ * <ul><li>Not Applicable</li></ul>
+ * <h2>Notes:</h2>
+ * <ul><li>YYYY-MM-DD - userid - javadoc template</li></ul>
+ */
+
+---------------------------------------------------------------------------------------------- 
+Commenting 
+
+    -Leave comments in complicated areas of code. Make sure that if another
+     developer decides to read your code, they can understand it as well.
+
+
+EXAMPLE: Commenting Lines of Code
+---------------------------------
+
+   private void processFromKeys()
+   {
+      // Construct a generic ADMI_Plan_Section_Key
+      key.setACCESS_KEY(accessUse);
+      key.setQUE_KEY(pedt.getQUE_KEY_FROM());
+      key.setPLAN_CODE_TYPE(planRecType);
+      setUpPlanKey();
+
+      // Loop though valid plan sections to find keys
+      for (String each : planSectionTable)
+      {
+         key.setSECTION_CODE(each);
+         key.setTHRU_DURATION(-1);
+         key.setRECORD_NUMBER("*");
+
+         // Call this utility to receive matching keys
+         planUtility.process(planArea);
+
+         if (planArea.getPlanKeySet() != null)
+         {
+            // Loop through given keys to begin processing
+            for (ADMI_PlanSectionKey inKey : planArea.getPlanKeySet())
+            {
+               pedtKey = inKey;
+               sectionCode = key.getSECTION_CODE();
+               mfioArea.setFile("PF" + sectionCode);
+
+               buildKey(pedtKey);
+               mfioArea.setKey((ADMI_Key) keyObject);
+               mfioArea.setFunctionCode("RD");
+
+               if (functionCode == 'D')
+               {
+                  deleteKey();
+               }
+               else if (functionCode == 'C' || functionCode == 'O')
+               {
+                  processInd = 'C';
+                  copyKey();
+               }
+            }
+         }
+      }
+   }
+   
+----------------------------------------------------------------------------------------------  
+Specific Standards
+----------------------------------------------------------------------------------------------
+initializeVariables() - Updated: schich - 2014-05-07
+
+	- All programs within ADMI_Enterprise.src.com.lidp.enterprise.process.module and
+	                      ADMI_Enterprise.src.com.lidp.enterprise.persistence.util
+	  must implement the initializeVariables() method.
+	  
+	- initializeVariables() is a public method and is called the first line within setup() 
+	  after the logger line.
+	  
+	- The purpose of initializeVariables() is to initialize class instance variables to an
+	  initial default value. The included instance variables are all Integer, int, String,
+	  char, BigDecimal, boolean, etc. variables.
+	  
+	- All other variables including parms and areas and utilities are still initialized within setup().
+	
+	
+	EXAMPLE
+	-------
+		private TCMAA_CommunicationRecord commRecord;
+  	 	private CRAC_CompanyRecord companyRecord;
+		
+		private APMFIO00_Area mfioArea;
+		private APMFIO00 apmfio00;
+   		private DateAdjust_Area dtad;
+   		private APFDIO00 apfdio00;
+   		
+   		private boolean processSW;
+   		private boolean matchSW;
+   		private boolean foundSW;
+   		
+   		private int int1;
+   		private int int2;
+   		
+   		private BigDecimal bigDecimal1;
+   		private BigDecimal bigDecimal2;
+   		
+   		
+   		private void setup()
+        {
+           initializeVariables();
+           
+           commRecord = parms.getCommunicationRecord();
+      	   companyRecord = parms.getCompanyRecord();
+           
+           mfioArea = new APMFIO00_AREA();
+      	   apmfio00 = new APMFIO00(mfioArea);
+           ...
+        }
+        
+        public void initializeVariables()
+        {
+           processSW = true;
+           matchSW = false;
+           foundSW = false;
+           
+           int1 = 0;
+           int2 = 0;
+           
+           bigDecimal1 = BigDecimal.ZERO.setScale(4);
+           bigDecimal2 = BigDecimal.ZERO.setScale(6);
+        }
+
+----------------------------------------------------------------------------------------------
+Access Modifiers Of A Class - Updated: woheal - 10/29/2012
+
+	-When developing a new program the access modifiers for the program should 
+	 be by default "private". The only areas that should be public are the class
+	 itself, and the method coreProcess who is called to begin the transaction.
+	
+    -If the class you are developing has methods or objects being used/called by 
+     another subclass or a parent class. Then those methods or objects should be 
+     "protected". Extended classes should follow this rule.  
+----------------------------------------------------------------------------------------------   
+Spacing - Updated: woheal - 04/12/2013   
+
+	-When developing, it is a good idea to keep good spacing to keep your code
+	 clean and readable.
+	
+	-For this project we have a script created to auto format your code for you.
+	 Even though this will clear up most trivial clutter, it does not fix everything.
+	 Please skim through your code and fix anything that the formatter missed. 
+	 To use the formatter in Eclipse go to:
+	 Source--->Format from the Source menu. (CTRL + SHFT + F) 
+	
+	-If statements, for loops, whiles, etc. should have a space in between each conditional.
+	 This is not needed if there is a for loop with an if conditional inside. The goal is 
+	 to make the code readable. 
+	
+	-Closing brackets should not have any spaces in between 
+	
+	-Conditionals should be neatly tabbed over to make longer conditionals readable.
+	
+	-When using a ! symbol for a boolean, add a space next to it to clearly identify a 
+	 not condition.
+	 
+	-Conditionals with AND's or OR's should have the && or || operators on the right side of the 
+	 statement. This helps with alignment so complicated conditionals are readable.
+	 
+	-Method calls are preferred to have a space in between the call, this would make debugging
+	 a lot easier.
+	 
+	-When casting a statement, leave a space between the cast.
+	
+	-If a statement is long, continue it on the next line tabbed over neatly.
+	
+	-If, for, or while statements should have a single space between the if, 
+	 for, or while followed by the conditional.
+	 
+	-There should be 2 spaces between your last class variable declared and the first
+	 method of your program.
+	
+	EXAMPLES
+	--------
+	
+	if (inputEntry.getBAND_AMT1().compareTo(BigDecimal.ZERO) == 0)
+    {
+    	inputEntry.setBAND_AMT1(BigDecimal.ZERO);
+    }
+      
+    switch (specialFunction)
+    {
+    	case 'A':
+    	   specialAddEntry();
+           break;
+          
+        case 'Z':
+           specialAddAll();
+           break;
+          
+        case 'D':
+           specialDeleteEntry();
+           break;
+          
+        case 'X':
+           specialDeleteAll();
+           break;
+    }
+      
+    for (int i = deleteCount; i >= 0; i--)
+    {
+    	deleteCount = diskMaster.getPFAB_EntrySet().size();
+        deleteCount--;
+        diskMaster.removePFAB_Entry(diskMaster.getPFAB_EntrySet().get(deleteCount));
+    }    
+    
+    if (pedt.getSECTION_RULE() == 'A' || 
+        pedt.getSECTION_RULE() == 'I' || 
+        pedt.getSECTION_RULE() == 'E')
+    {
+         // continue
+    }
+    else
+    {     
+         if (pedt.getMESSAGE_FUNCTION() == 'P')
+         {  
+            if (pedt.getSECTION_RULE() != 'X')
+            {
+               errorUtility.loadError("06700R", this.getClass().getName());
+            }
+         }
+         else
+         {
+            errorUtility.loadError("06700R", this.getClass().getName());
+         }
+    }
+    
+    if (! Simple_Edits.isSpaces(pedt.getPLAN_CODE_TO()))
+    {
+         if (pedt.getPLAN_CODE_TO().equals("********"))
+         {
+            pedt.setPLAN_CODE_TO("");
+         }
+    }
+    
+    protected void processEdit()
+    {
+   		editControl();
+
+        editData();
+
+        if (changeSW)
+        {
+        	checkForDuplicates();
+      	}
+    }
+    
+    if (pedt.getCOMPANY_FROM().equals(pedt.getCOMPANY_TO()) && 
+        pedt.getQUE_KEY_FROM() == pedt.getQUE_KEY_TO() && 
+        pedt.getPLAN_CODE_FROM().equals(pedt.getPLAN_CODE_TO()) && 
+        pedt.getSEX_CODE_FROM() == pedt.getSEX_CODE_TO() && 
+        pedt.getTYPE_OF_COV_FROM() == pedt.getTYPE_OF_COV_FROM() && 
+        pedt.getISSUE_AGE_FROM() == pedt.getISSUE_AGE_TO())
+    {
+         if (benefitTableSW)
+         {
+            errorUtility.loadError("06720R", this.getClass().getName());
+         }
+         else
+         {
+            if (pedt.getBEN_TYPE_FROM().equals(pedt.getBEN_TYPE_TO()))
+            {
+               errorUtility.loadError("06720R", this.getClass().getName());
+            }
+         }
+    }
+    
+    rwepExtractProcessing.setVariableKey(pedtKey.getSECTION_CODE()
+            + taskTimeControl.getJULIAN_DATE() + taskTimeControl.getTRUE_TIME()
+            + taskTimeControl.getTASK_NUMBER().toString() + seqCount);
+----------------------------------------------------------------------------------------------		
+Setters and Getters - Updated: woheal - 10/29/2012
+
+   -When creating setters and getters for a business object, the parameter should be
+    named "param" to make cloning more efficient. Making a unique name as a parameter
+    will make that parameter unique only to the function so this method would be much 
+    better.
+    
+   EXAMPLE:
+   
+   Instead Of This:
+   
+   public void setAGE(int new_age)
+   {
+   		age = new_age;
+   }    
+   
+   Use This:
+   
+   public void setAGE(int param)
+   {
+   		age = param;
+   }		
+----------------------------------------------------------------------------------------------   
+Comparing Integers in Java - Updated: woheal - 10/29/2012
+
+   -When comparing Integer objects to Integer objects, you should use the compareTo() method 
+    of the Integer class to do so.
+    
+   EXAMPLE
+   -------
+   
+   Integer A = new Integer(21);
+   Integer B = new Integer(50);
+   
+   
+   if (A.compareTo(B) > 0)
+    {
+        // Then A is greater than B
+    } 
+    
+   -When comparing an Integer object to a primitive int. Use intValue() to compare.
+  
+   EXAMPLE
+   -------
+   
+   Integer A = new Integer(21);
+   int C = 30;
+   
+   if (A.intValue() > C)
+   {
+   		// Then C is less than A
+   }
+----------------------------------------------------------------------------------------------
+Boolean Methods - Updated: woheal - 10/29/2012
+    
+   -When developing a method that returns a boolean, it should return only one boolean in the 
+    method. "return true" or "return false" should not be used
+    
+    EXAMPLE
+    -------
+    private boolean isPlanCodeValid(Integer num)
+    {      
+      boolean validSW;
+
+      if (num > 100)
+      {
+         validSW = true;
+      }
+      else
+      {
+         validSW = false;
+      }
+
+      return validSW;
+    }
+---------------------------------------------------------------------------------------------- 
+Boolean Switches - Updated: woheal - 10/29/2012
+    
+    -If your program uses booleans as switches or indicators for processing, the booleans name
+     should contain SW at the end to indicate that it is a switch.
+     
+     EXAMPLE
+     -------
+     
+     private boolean processSW;
+     private boolean changeSW;
+     private boolean deleteSW;
+     private boolean successSW;
+----------------------------------------------------------------------------------------------   
+IF Statements From COBOL to Java - Updated: woheal - 10/29/2012
+   
+     -When developing we use the COBOL equivalent to the program we are making as a guideline. 
+      Due to that fact, you may find yourself developing if statements in java that follow 
+      their COBOL counterparts. For some complicated conditionals this may be fine. But for
+      some statements, java can make the statement more simple. Remember the point is to 
+      make the code efficient and clean.
+      
+      EXAMPLE
+      ------- 
+      
+      This:
+      
+      if (! Simple_Edits.isSpaces(pedt.getISSUE_AGE_TO()))
+      {
+         if (pedt.getISSUE_AGE_TO().equals("***"))
+         {
+            pedt.setISSUE_AGE_TO("");
+         }
+      }
+      
+      Not This:
+      
+      if (Simple_Edits.isSpaces(pedt.getISSUE_AGE_TO()))
+      {
+      	 //continue
+      }
+      else
+      {
+         if (pedt.getISSUE_AGE_TO().equals("***"))
+         {
+            pedt.setISSUE_AGE_TO("");
+         }
+      }
+
+----------------------------------------------------------------------------------------------       
+Restricted Variable Names - Updated: woheal - 04/12/2013
+
+      -When developing a new module from a COBOL source to Java do not use the following
+      variable names or references in your program or your javadoc:
+      
+      TRAILER - Use Segment
+      GETMAIN - Do not have to get memory in java
+      ABEND - Use Exception
+      HANDLE-CONDITION - Do not have handle conditions in java
+      LINK - Use Call instead.
+      
+      -This standard applies to all COBOL specific variable names that would not make sense
+      to have in a java program. 
+----------------------------------------------------------------------------------------------
+Using scripts to build Business Objects - Updated: woheal - 10/29/2012
+
+	- When you create a business object, you must determine which script to use 
+	to make it. For business objects who are linked to a Message object should use
+	the following script:
+	
+	testarun -S act2.admiobj.xxx arun.gen.BLDJAVAOBJ acgvaca > /P/tmp/yyy
+
+		where xxx = GVAC_CommissionExtract - This is used to name the class
+  			  yyy = GVAC_CommissionExtract.java - Business Object name. 
+							                      Needs to match the class name  
+							                
+	- This script will generate the variable names to all caps with underscores in between.
+	This is a required format for objects that come in as a message.
+	
+	-Alternatively, if a business object is not linked to a message object or perhaps you
+	are creating a new "area" object for a utility you are developing, then you should use
+	this alternative script:
+	
+	testarun -S act2.admiobj.xxx arun.gen.BLDJAVAOBJ acpl??a Mixed > /P/tmp/zzz
+	
+	where xxx = PFCR_Entry - This is used to name the class
+		      yyy = MPFCR-TABLE-DATA-A (05 tag name of variable data)
+		      zzz = PFCR_Entry.java - Business Object name. Needs to match the class name
+		     
+	- The difference this time is this script will build the variable names in lower case.
+	If the name is more than 1 word then the first letter of each word will be capitalized.
+	No underscores will be added along with no spaces. This is a standard that should be
+	applied to all business objects or work areas that do not have a relationship with a
+	Message object.
+----------------------------------------------------------------------------------------------	  
+Initializing variables and objects - Updated: woheal - 04/12/2013
+
+	-Variables and objects declared in classes should not be initialized in the variable
+	 list. Please initialize the variable in the beginning of your program or preferably
+	 in a method called setup() or initialize().
+	 
+----------------------------------------------------------------------------------------------
+Matching multiple string or character values using .matches() - Updated: woheal - 04/12/2013
+
+	-This is more of a recommendation rather than a standard. When evaluating a String or
+	 character field for a series of values, you can utilize the java method .matches() to
+	 make the task simple and short.
+	 
+	 EXAMPLE
+	 -------
+	 
+	 This:
+	 
+	 String functionCode;
+	 char otherCode;
+	 
+	 if (userName.matches("RD|WR|RW"))
+	 {
+	 	if (Character.toString(otherCode).matches("A|B|C"))
+	 	{
+	 		return true;
+	 	}
+	 }
+	 else
+	 {
+	 	return false;
+	 }
+	 
+	 Instead of this:
+	 
+	 String functionCode;
+	 char otherCode;
+	 
+	 if (userName.equals("RD") ||
+	     userName.equals("WR") ||
+	     userName.equals("RW"))
+	 {
+	 	if (otherCode == 'A' ||
+	        otherCode == 'B' ||
+	        otherCode == 'C')
+	 	{
+	 		return true;
+	 	}
+	 }
+	 else
+	 {
+	 	return false;
+	 } 
+	 
+----------------------------------------------------------------------------------------------
+Inner Classes Standards - Updated: woheal - 04/12/2013
+
+	-Some programs may require you to create an inner class to store some information
+	 to process later. Our standard is to create an ArrayList of the Object or Class 
+	 to store this information. The inner class if needed should be placed at the bottom
+	 of your program with its access methods declared as private. That way only your class
+	 has access to this subclass. If your subclass has some variables you should have no
+	 setters or getters for that class since you can easily access them via the class object.
+	 However, if the class has only a handful of variables we do recommend having a constructor
+	 method to make things simple when creating a new entry for your ArrayList. 
+	 
+    -It should be noted that if one of your variables is type BigDecimal, you should make
+     the setter method for that variable to handle the setScale for that BigDecimal.
+	 
+	 EXAMPLE
+	 -------
+	 
+	 // At the bottom of the class your class should be defined
+	 
+	 private class MyClass
+	 {
+	 	private String myName;
+	 	private Integer myAge;
+	 	private BigDecimal myBalance;
+	 
+	 	private MyClass(String inName, Integer inAge, BigDecimal inBalance)
+	 	{
+	 		myName = inName;
+	 		myAge = inAge;
+	 		myBalance = inBalance;
+	 	}
+	 	
+	 	private void setMyBalance(BigDecimal param)
+	 	{
+	 		myBalance = param.setScale(2, BigDecimal.ROUND_HALF_UP);
+	 	}
+	 }
+	 
+	 // At the top of the program you should make your List
+	 
+	 private List<MyClass> myClassList; 
+	 
+	 // In the beginning of your program you should initialize the class object.
+	 
+	 myClassList = new ArrayList<MyClass>();
+	 
+	 // Refer to the ArrayList java class for more information on to interact with your ArrayList.
+	 
+----------------------------------------------------------------------------------------------

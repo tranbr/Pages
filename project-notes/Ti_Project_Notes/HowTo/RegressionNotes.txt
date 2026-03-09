@@ -1,0 +1,46 @@
+Regression
+
+===================================================================================================
+Step 1: Setup
+
+1. Go to ADMI_Regression Properties and make sure that you have the correct paths set.
+2. Make sure there is a folder called "input" and one called "output" in the path you specified.
+
+===================================================================================================
+Step 2: Capture input stream
+
+Capture the input message(s) from Jem. To achieve this,
+	1. Check the Regression Test checkbox in the Desktop Menu. This will bring up the
+	   Regression Test Window.
+	2. Enter the file name prefix which you would like to save to. Each transaction will be saved to
+	   the input folder in separate files with the specified prefix.
+	3. Make sure the "Capture" checkbox is checked in the Regression Test window.
+	4. Click Submit to save.
+	5. Perform your transaction(s) as normal.
+	
+If you need to take a break from capturing transactions in Jem, uncheck the "Capture" checkbox. This will keep the
+Regression test window open without saving transactions. You may then run transactions without appending to your file.
+Check the checkbox again when you are ready to resume capturing streams.
+
+Note: In order for this to work, the display rule needs to be set to "Show All" in the User Profile.
+You will need to be set to ADMIEXEC in the "adbsuac" table in the database.
+===================================================================================================
+Step 3: Run Regression Test program
+
+In the Titanium console, select Regression Test from the tools menu. Select the file name prefix for the 
+input file(s) and optionally, a previous results folder name.
+===================================================================================================
+Step 4: View results
+
+Once the regression program has finished successfully you should see this message:
+"Regression test has completed. Check output folder for results."
+
+Check this folder for your results. The results should be in a subdirectory named
+	results_[inputFileName]_[date]_[time].
+For each message in the input file, there should be an XML file containing the results of that transaction.
+
+There should also be a file named "analysis" outlining the differences between this run and the previous one. If there were changes, this report
+will indicate what they were with before and after values. The report will also indicate the total number of
+differences found.
+
+If there was a problem performing the regression test, you should see an error message.

@@ -1,0 +1,75 @@
+There are 3 types of APFNxx00 programs. 
+	1. Collection processors
+	2. Object processors
+	3. Exception Collection processors (so far CM and SP)
+	
+FNxx collection processor programs 
+Function code driven.  Effect workClient action based on function
+
+If  inputFunctionCode = U
+    findMatching() (note - findMatching will no longer remove segments when a match is found)
+    
+    if  matchSW
+        if inputAction = 0 or V
+           set inputActionCode to V
+           remove work
+           add input to work
+           
+        else if  inputAction = C or A
+                 remove work
+                 set inputActionCode to C
+                 add input to work
+                 process edit
+                     
+        else (must be D)
+             set workActionCode to D
+    
+    else
+        set inputActionCode to A
+        Add input to work
+        process edit
+        
+FNxx object processor programs
+Function code driven.  Effect workClient action based on function
+
+If  inputFunctionCode = U
+	if work == null
+		set inputActionCode to A
+		set work to input
+		processEdits
+	else if action = 0 or V
+		set inputActionCode to V
+		set work to input
+	else if action = A or C or D
+		set work to input
+		process edits
+
+FNxx Exception Collection processor (CM/SP) programs
+
+if input != null
+	'clear()' work
+	loop thru input 
+		setActionCode('A')
+		setFunctionCode('U')
+		add input to work
+else
+if work != null
+	loop thru work
+		setActionCode('D')
+		setFunctionCode('U')
+		
+
+NExx basic program rules (more complex rules may exist)
+Action code driven.  Effect workClient based on action code
+
+if  workAction = A or C
+    edit
+    set workAction to 0
+else if  workAction = V
+         verify against disk
+         set workAction to 0
+     else if  workAction = D
+              remove from work
+              
+NCxx programs.  These programs look at the segment in relation to the record.
+They deal with workClient.  

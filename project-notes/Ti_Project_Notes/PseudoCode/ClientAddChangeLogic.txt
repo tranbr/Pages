@@ -1,0 +1,74 @@
+
+APFADD00:
+  If client number is blank link APFXIA00
+  Read client record.  Should fail.
+  Create work client record with AC
+  Pass work record to FAD01 table of programs (APFNxx00)
+  Pass work client record to APNMCH00 if error severity < 24
+  Retrieve the record
+
+APFNxx00:
+  Passed the input object and the work record
+  Perform basic edits then apply (function code based) input against work
+
+APFUPD00:
+  Read client
+  Verify security key
+  Copy to work record
+  Process SD table (based on message ID (FUP01...)(APFNxx00)
+  Call APNMCH00 if error severity < 24
+  Call APFUCP00
+  Retrieve the record
+
+APFXIA00:
+  Find an available client number and delete ADMFX as appropriate
+  
+AGGADD00:
+  Read to make sure agent does not exist (AGGRIO00)
+  Link through GAD/01 table (AGGRxx00) programs
+  Call APNMCH00
+  Link through GAD/03 processing table (02's + some)
+  Call APFUCP00
+  Write GR
+
+AGGRxx00:
+  For programs that support segments which are on agent and client:
+    Apply updates to agent work and to client work
+
+
+02's + some:
+  Each of the AGGRxx02 programs offers a unique complexity.
+
+APNMAD00:
+  Client number assignment through APFXIA00 (or check for duplicates)
+  Delete 'available' index record if found
+  Call APNMSR00 for cross edits
+
+APNMSR00:
+  See if this client exists on disk
+
+APNMDE00:
+  Delete client record and index records
+  
+  
+APNMCH00: Passed work client business object
+  Test enq the client key, try 5 times if fails
+  Read for update, should fail on add, should be okay on change
+  Link through NAM/01 (APNExx00)
+  Link through NAM/02 (APNCxx00) if error severity < 24
+  Write or rewrite
+  
+APNExx00:
+  Complex programs.  One per client segment.  Input includes work client record
+  Combine logic of APNExx00 + APFADD00 + APFUPD00 + APNMCH00 + APNMCH02
+  APNENM00: function-code driven
+            A/T --> APNMAD00
+            C/N --> APNMCP00 (see AUNMCPA, N=Delete all segments)
+            D   --> APNMDE00
+            V   --> APNMSR00
+
+APNCxx00: Cross edits
+  Put programs in this table that need to look at the contract.  The
+  APNExx00 programs will edit the segments but some edits need to occur
+  on the client record level so they'll go here.
+  APNCNM00: Make sure we have an NM segment (was in APFADD00)

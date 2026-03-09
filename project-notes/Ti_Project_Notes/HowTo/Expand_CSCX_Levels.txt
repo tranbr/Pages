@@ -1,0 +1,42 @@
+How to: Expand the number of hierarchy levels in Titanium
+
+	The standard Titanium configuration has the number of agent hierarchy levels set at 4.  
+This is the maximum number of agents that can be involved in an insurance sale and may be compensated.  
+Titanium supports agent hierarchies with up to 16 levels.
+
+	Project TI-1744 creates a tool that allows for expanding or increasing the number of hierarchy levels 
+defined in the system.  It provides a conversion process that can be run to expand the number of hierarchy 
+levels on existing policies (ADBTR), agents (ADBGR), and commission control (ADBCC) records.  
+
+	This process cannot be used to reduce the number of hierarchy levels.
+
+	1. Ti_Utilities/resources/tsite/ADMI_Enterprise.properties
+		a. CSCX_LEVELS - set new maximum number of hierarchy levels
+		b. OFFICE_LEVEL - adjust the office level if desired
+		
+	2. JEM/jem/nodep/LIDP_SITEVariables.java
+		a. siteCSCX_Levels - set to the same value as CSCX_LEVELS
+		b. siteOfficeLevel - set to the same value as OFFICE_LEVEL
+		
+	3. Build and deploy Ti_Enterprise and JEM
+	
+	4. If Titanium has existing policies (ADBTRAC/ADBXRAC), agents (ADBGRAC), or commission control (ADBCCAC) records 
+	with the old number of hierarchy levels, those records must be converted.
+
+		a. Build and deploy Ti_SOA_Services/MasterConversion 
+		b. Start server (or restart is already running) to pick up change to ADMI_Enterprise.properties
+		c. Use Postman, or another JSON submission tool, to submit the JSON in Expand_CSCX_Levels.json to URL: http://host:port/MasterConversion/Process/Conversion substituting your hostname/ip and port
+
+	5. Add and configure plan file tables for the additional hierarchy levels.  At a minimum, the SD01 tables 
+	must be built, even if they contain no programs.  Which of the other tables are needed depends on what 
+	programs are put in the SD01 table for each level.
+	The 'xx' in the tables is the hierarchy level.  For example, if you are expanding from 4 to 16 hierarchy levels,
+	you would, at a minimum, need to add table SD/COM/05, SD/COM/06, SD/COM/07 ... SD/COM/16.
+		a. SD/COM/xx - commission processing programs
+		b. CR/COM/xx - commission rates (unless CR01 table subtype on AGCY/Commission Calculation page = 'Y - 01')
+		c. CR/FEE/xx - service fee rates (unless CR01 table subtype on AGCY/Commission Calculation page = 'Y - 01')
+		d. FP/FPR/xx - flag processing (unless FP01 table subtype on AGCY/Commission Calculation page = 'Y - 01')
+		e. FP/UFP/xx - charge back rules (unless FP01 table subtype on AGCY/Commission Calculation page = 'Y - 01')
+		f. FE/CHBK/xx - charge back exclusion (unless FP01 table subtype on AGCY/Commission Calculation page = 'Y - 01')
+		g. VS/VST/xx - vesting rules (unless VS01 table subtype on AGCY/Commission Calculation page = 'Y - 01')
+		h. VC/VCT/xx - annualization rules (unless VC01 table subtype on AGCY/Commission Calculation page = 'Y - 01')

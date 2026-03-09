@@ -1,0 +1,14 @@
+APFNxx00 edit modules go in :
+
+Admin2_Server/src/com.lidp.server/process/tablemodules
+
+There are 2 basic types of FNxx Objects. There are Collection Objects like FNCL and FNCM and there are 
+(for lack of a better term) Individual (one per situation) Objects like FNDM.
+
+Most but not all of these are children of FNAF. One key difference between these two types of objects is how the 
+edit programs has to deal with them. 
+
+In the Parent, collections have Add and Remove methods. Individual objects have Get and Set methods. 
+FNCL and FNDM are both children of FNAF so the Add/Remove - Get/Set methods for them are in :
+Admin2_Utilities/src/com.lidp/shared/tranfobj/admi/persistence/FNAF_SITUATION.java
+

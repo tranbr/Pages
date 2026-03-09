@@ -1,0 +1,25 @@
+#!/bin/ksh
+print "Create ADMCI records from DTCC file"
+
+if (test $# -eq "0")
+then
+   echo "script requires argument: dtcc-ci-load DTCC-FILE"
+else
+   dtccfile=$1
+
+   cd
+   cd hcob/run/rdta
+
+   cp ${dtccfile} AINFILE.txt
+   cardtoseq -f 300 AINFILE.txt
+   lidcams -o delete ADMCI00
+   lidcams -o define ADMCI00
+   batchrun ABMKCI00
+
+# database
+#  lidcams -i -q ci.seq repro admci00
+#  cp ci.seq AADMXXOT
+#  cp ACARDSIN.load_ci ACARDSIN.txt
+#  cardtoseq ACARDSIN.txt
+#  batchrun abludb00
+fi

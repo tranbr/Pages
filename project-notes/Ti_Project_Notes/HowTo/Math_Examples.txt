@@ -1,0 +1,111 @@
+This is an example of code from APNCGB00 :
+
+   /*
+    * In this method we need to loop thru the remaining AO01 entries adjusting Amount-Percent
+    */
+   private void highRangeWork()
+   {
+      /*
+       * Numbers with decimal positions are all defined as BigDecimal. To do 'normal' math functions on them
+       * we must first convert them to doubles. ao01AmountPercent and fngbAmountPercent are examples of
+       * work fields defined as doubles that will receive and be used to set BigDecimals.
+       */
+      workNumberOfPolicies = workGroupBillingInitialInformation.getNUMBER_OF_POLICIES();
+      double ao01AmountPercent = pfaoEntry.getAMOUNT_PERCENT().doubleValue();
+      double fngbAmountPercent = ao01AmountPercent * pfaoEntry.getHIGH_RANGE();
+      workNumberOfPolicies = workNumberOfPolicies - aoHighRangeEntry.getHIGH_RANGE();
+      
+      for (int i = ao01Entry; i <= ao01NumberOfEntries; i++)
+      {
+         aoHighRangeEntry = new PFAO_Entry();
+         aoHighRangeEntry = pfaoMasterArea.getPFAO_EntrySet().get(i);
+         
+         if ((aoHighRangeEntry.getISSUE_STATE().equals("**") ||
+               aoHighRangeEntry.getISSUE_STATE().equals(fnnxState)) &&
+              (StringUtilities.isLessOrEqual(aoHighRangeEntry.getSTART_DATEX(), groupPaidToDate) &&
+               StringUtilities.isGreaterOrEqual(aoHighRangeEntry.getEXPIRATION_DATEX(), groupPaidToDate)) &&
+               (workGroupBillingRatingInformation.getSM_GRP_REFORM_IND() == aoHighRangeEntry.getSMALL_GRP_IND() ||
+                     workGroupBillingRatingInformation.getSM_GRP_REFORM_IND() == '*'))
+         {
+            pfaoEntry = aoHighRangeEntry;
+            issOfficeYes = false;
+            testIssueOffice();
+            if (issOfficeYes)
+            {           
+               if (workNumberOfPolicies < aoHighRangeEntry.getHIGH_RANGE())
+               {
+                  fngbAmountPercent = fngbAmountPercent + (ao01AmountPercent * workNumberOfPolicies);
+               }
+               else
+               {
+                  fngbAmountPercent = fngbAmountPercent + (ao01AmountPercent * aoHighRangeEntry.getHIGH_RANGE());
+               }
+               workNumberOfPolicies = workNumberOfPolicies - aoHighRangeEntry.getHIGH_RANGE();
+            }
+         }
+      }
+      /*
+       * Now we must convert the double back to a BigDecimal and set the data element in the
+       * business object. 
+       */
+      workGroupMiscAmtTbl.setAMOUNT_PERCENT(BigDecimal.valueOf(fngbAmountPercent));
+   }
+
+  ==================================================================================================================
+   
+   Here are a few other examples :
+   
+   import java.math.BigDecimal;
+
+
+public class BasicTests
+{
+   public static void main(String[] args)
+   {
+      new BasicTests();
+   }
+
+   public BasicTests()
+   {   
+      double modeFactor = 1.00246627;
+      double premiumPct = 0.2113300;
+      double result1;
+      BigDecimal result1BO;
+      double result2;
+      BigDecimal result2BO;
+      BigDecimal deathBenefit = new BigDecimal(200000.00);
+      double workDB;
+      BigDecimal netAmtAtRisk = new BigDecimal(195519.45);
+      double workNAAR;
+      
+      //***1 Disability Death Benefit
+      
+      //Convert bigDecimals
+      workDB = deathBenefit.doubleValue();
+      
+      //Calc Result
+      result1 = workDB / modeFactor;
+      
+      //Set Result to some business object bigDecimal field
+      result1BO = new BigDecimal(result1);
+      result1BO = result1BO.setScale(2, BigDecimal.ROUND_HALF_UP);
+      
+      //Print Result
+      System.out.println("Discounted Death Benefit = " + result1BO);
+         
+      //***2 Cost of Insurance
+      
+      //Convert bigDecimals
+      workNAAR = netAmtAtRisk.doubleValue();
+      
+      //Calc Result
+      result2 = workNAAR * premiumPct / 1000;
+      
+      //Set Result to some business object bigDecimal field
+      result2BO = new BigDecimal(result2);
+      result2BO = result2BO.setScale(2, BigDecimal.ROUND_HALF_UP);
+      
+      //Print Result
+      System.out.println("Cost of Insurance = " + result2BO);                 
+   }
+}

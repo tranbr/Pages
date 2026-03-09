@@ -1,0 +1,18 @@
+
+A utility exists for basic FE01 edits.
+
+Verify_FE_Data is used for this.  The utility makes use of a data area named Verify_FE_Area.
+
+Table program APNECL00 uses the utility.
+
+Feel free to add additional methods to the utility as needed.
+
+Pass the utility the key fields needed to get the proper table data from the database.
+
+Pass the utility the search field (editField) and it's length (not always .length() due to .trim()).
+
+An editRule of '0' tells the utility to access the table and search entries for a match on editField.
+An editRule of '1' does the same thing but supports asterisk character substitution.
+An editRule of '2' will set returnCode to '0' if the table exists and non-zero if it does not.
+
+For editRule '0' and '1' the utility will set returnCode and will (upon success) return the matching table entry.

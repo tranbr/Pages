@@ -1,0 +1,35 @@
+<!-- Copyright 2017 L.I.D.P. Consulting Services, Inc.  All rights reserved.
+ 
+     Information in these files are the confidential and proprietary product of 
+     L.I.D.P. Consulting Services, Inc. No part of these files may be used, 
+     reproduced or distributed except as authorized in writing by 
+     L.I.D.P. Consulting Services, Inc.                                         -->
+
+<!-- Author: Scott Bowman -->
+<!-- Information on how to create filter files: http://findbugs.sourceforge.net/manual/filter.html -->
+<FindBugsFilter>
+
+      <!-- ADBPDAC_DBUtil.java: method "insert_LoadDB(APMFIO00_AREA)" line 184
+        
+        ================================================
+        Find Bugs Report:
+        A reference value which is null on some exception control path is dereferenced here.  This may lead to a NullPointerException when the code is executed.  Note that because FindBugs currently does not prune infeasible exception paths, this may be a false warning.
+
+        Also note that FindBugs considers the default case of a switch statement to be an exception path, since the default case is often infeasible.
+        
+        Rank: Troubling (11), confidence: Normal
+        Pattern: NP_NULL_ON_SOME_PATH_EXCEPTION 
+        Type: NP, Category: CORRECTNESS (Correctness)
+        ================================================
+
+        The try block ensures that variable "bos" will never be null.
+      -->
+
+   <Match>
+      <!-- the "~" indicates regex -->
+      <Class name="~com\.lidp\.masterio\.persistence\.entities\.dbutil\.ADB.*DBUtil" />
+      <Method name="insert_LoadDB" />
+      <Bug pattern="NP_NULL_ON_SOME_PATH_EXCEPTION" />
+   </Match>
+
+</FindBugsFilter>

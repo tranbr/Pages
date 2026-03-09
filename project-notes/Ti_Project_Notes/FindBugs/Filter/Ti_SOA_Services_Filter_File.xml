@@ -1,0 +1,60 @@
+<FindBugsFilter>
+	<!-- ConversionProcessing.java: method getRecordCount(), line 118
+	  
+	  ================================================
+	  Findbugs report:
+
+	  Bug: Return value of java.sql.PreparedStatement.executeQuery() ignored in com.lidp.services.MasterConversion.Process.abs.ConversionProcessing.getRecordCount()
+
+	  The return value of this method should be checked. One common cause of this warning is to invoke a method on an immutable object, thinking that it updates the object. For example, in the following code fragment,
+
+	  String dateString = getHeaderField(name);
+	  dateString.trim();
+
+
+	  the programmer seems to be thinking that the trim() method will update the String referenced by dateString. But since Strings are immutable, the trim() function returns a new String value, which is being ignored here. The code should be corrected to: 
+
+	  String dateString = getHeaderField(name);
+	  dateString = dateString.trim();
+
+
+	  Rank: Scary (5), confidence: Normal
+	  Pattern: RV_RETURN_VALUE_IGNORED 
+	  Type: RV, Category: CORRECTNESS (Correctness)
+	  ================================================
+	   
+	  The code findbugs flagged looks like this:
+	     
+	     prepStmt.executeQuery();
+	     rs = prepStmt.getResultSet();
+	  
+	  getResultSet() returns the same object executeQuery() would, so ignoring the return value of executeQuery does not make a difference to the logic of the program.
+	-->
+   <Match>
+      <Class name="com.lidp.services.MasterConversion.Process.abs.ConversionProcessing" />
+      <Method name="getRecordCount" />
+      <Bug pattern="RV_RETURN_VALUE_IGNORED" />
+   </Match>
+
+   	<!-- CherryReturn.java: lines 17-19
+	  
+	  ================================================
+	  Findbugs report:
+
+	  Bug: Class com.lidp.services.Cherry.Process.CherryReturn defines non-transient non-serializable instance field checkOnly
+
+	  This Serializable class defines a non-primitive instance field which is neither transient, Serializable, or java.lang.Object, and does not appear to implement the Externalizable interface or the readObject() and writeObject() methods.  Objects of this class will not be deserialized correctly if a non-Serializable object is stored in this field.
+
+	  Rank: Troubling (14), confidence: High
+	  Pattern: SE_BAD_FIELD 
+	  Type: Se, Category: BAD_PRACTICE (Bad practice)
+
+	  ================================================
+	-->
+
+   <Match>
+   	 <Class name="com.lidp.services.Cherry.Process.CherryReturn" />
+   	 <Bug pattern="SE_BAD_FIELD" />
+   </Match>
+
+</FindBugsFilter>

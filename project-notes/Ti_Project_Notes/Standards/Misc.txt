@@ -1,0 +1,46 @@
+Misc. Standards updated 09/01/2017
+---------------
+
+1.  All java objects variables unless generated will begin with lower case alpha.
+
+    field1
+    myField1
+    myNextField1
+
+2.  Get and Set methods will begin in lower case and the first position of the variable
+    used in the method will be upper case.
+    
+    getField1
+    setMyField1
+    getMyNextField1
+        
+3.  Java objects should only extend AbstractTO when they are part of persistence and has
+    data maintained on the database.
+    
+4. Commit messages will follow this format:
+-------------------------
+TI-573: Report Generation
+
+FirstProgramChanged:
+
+- Brief description of change.
+
+SecondProgramChanged:
+
+  (Fix/Update/Move/Delete)
+- Use action words. Give commands, not a summary.
+
+-------------------------
+The first line will have the TI number followed by a colon, a space and then the issue description.
+
+The second line will always be blank. A message will appear above the commit message window in Eclipse 
+if the string extends to the second line.
+
+List the classes that are changed, followed by a colon. For changes made to the individual files, you
+would add a dash followed by a space, and then a short description of what was done in the present 
+tense (Fix instead of Fixed). The purpose of the dash followed by a space is to create bullet points 
+that will appear in GitHub.
+
+5. All pull requests must be one commit. After an initial commit for a new pull request, click the 
+"Amend Commit" button in Eclipse for each additional commit. This will combine all of the commits 
+into one.

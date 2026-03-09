@@ -1,0 +1,61 @@
+Titanium's client processing:
+
+There are three basic ways to add/update a client:
+
+1) From the client notebook/technical series screens.
+2) From the policy notebook.
+3) From the agent notebook.
+
+Client information is not stored on nor accessed through the policy/agent.  Instead, a collection of clients associated with a
+policy/agent is passed along from program to program as part of the parms.  Each client associated with the policy/agent is 
+another entry in the collection.  A relate client (RC) segment exists on the policy/agent which contains client number, name 
+number and relationship codes that associate a client to the policy/agent.
+
+In general, client information is passed from the transaction control program to sub-programs in parms.  The parms contain
+a collection of inputClients and workClients.  The inputClient is transaction input and includes function codes.  The 
+workClient is from the FNAC table(s) (or a copy of inputClient on an add).  The first layer of programs are driven by
+functionCode and will effect the workClient from the inputClient.  
+
+  APFUPD00 - Uses FUP/01 to effect the workClient from the inputClient
+           - Uses FUP/03 to process the client beyond the above processing
+           - Uses APNMCH00 for global client add/update control
+  APFADD00 - Uses FAD/01 to create a workClient from input
+           - Uses APNMCH00 for global client add/update control
+           
+  APPADD00 - Uses PAD/01 to branch to APFINT00 which is the client interface
+  APPUPD00 - Uses PUP/01 to branch to APFINT00 which is the client interface
+  
+  AGGADD00 - Uses GAD/01 to branch to AGFINT00 which is the client interface
+  AGGUPD00 - Uses GUP/01 to branch to AGFINT00 which is the client interface
+
+
+  APFINTXX - Abstract class extended by APFINT00 and AGFINT00
+           - Executes preProcess table
+           - Executes processTable (add is FAD/01, update is FUP/01)
+           - Executes APNMCH00
+           - Executes postProcess table
+  APFINT00 - Extends APFINTXX and sets up;
+             PCE/01 - pre process table
+             PCE/02 - post process table
+  AGFINT00 - Extends APFINTXX and sets up;
+             PCE/01 - pre process table
+             GCE/02 - post process table
+  APNMCH00 - Name add/change process control
+             This is a control program that effects edits and updates through
+             use of 3 tables.
+             NAM/01 - Segment level edits
+             NAM/02 - Cross edits
+             NAM/03 - Client level processing
+
+FUP/01 - APFNxx00 - Effect workClient from inputClient with some edits
+FUP/03 - APFBFN00 - APFUCP00 interface (group)
+FAD/01 - APFNxx00 - Create workClient with some edits
+PCE/01 - APTRxx02 - Currently only APTRNM02
+PCE/02 - APTRxx02 - Policy to client edits
+GCE/02 - AGGRxx00 - Agent to client edits
+NAM/01 - APNExx00 - Name Edit
+NAM/02 - APNCxx00 - Name cross edits
+NAM/03 - Broad stroke programs - APFFCE00 - Future effective
+                                 APFMBM00 - Compare segment control
+                                 APFFCP00 - APFUCP00 interface (group)
+                                 APFXUP00 - Update FXAC table

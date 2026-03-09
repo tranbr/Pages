@@ -1,0 +1,272 @@
+<!-- Copyright 2017 L.I.D.P. Consulting Services, Inc.  All rights reserved.
+ 
+     Information in these files are the confidential and proprietary product of 
+     L.I.D.P. Consulting Services, Inc. No part of these files may be used, 
+     reproduced or distributed except as authorized in writing by 
+     L.I.D.P. Consulting Services, Inc.                                         -->
+
+<!-- Author: Scott Bowman -->
+<!-- Information on how to create bug filters: http://findbugs.sourceforge.net/manual/filter.html -->
+<FindBugsFilter>
+      <!-- APFECT00.java: method "reverseTrans()" line 873
+        
+        ================================================
+        Find Bugs Report:
+        Bug: "." or "|" used for regular expression in com.lidp.enterprise.process.tablemodule.APFECT00.reverseTrans()
+
+        A String function is being invoked and "." or "|" is being passed to a parameter that takes a regular expression as an argument. Is this what you intended? For example 
+        •s.replaceAll(".", "/") will return a String in which every character has been replaced by a '/' character 
+        •s.split(".") always returns a zero length array of String 
+        •"ab|cd".replaceAll("|", "/") will return "/a/b/|/c/d/" 
+        •"ab|cd".split("|") will return array with six (!) elements: [, a, b, |, c, d] 
+
+        Rank: Scariest (2), confidence: High
+        Pattern: RE_POSSIBLE_UNINTENDED_PATTERN 
+        Type: RE, Category: CORRECTNESS (Correctness)
+        ================================================
+
+        The comment reads:
+        //MOVE '0' TO MSRAC-TRAN-BYTE-1-A
+ 
+        It appears the code 
+ 
+	        sracAcctRec.getSRAC_PRIMARY_KEY().getTRANSACTION_CODE().replaceFirst(".", "0") 
+ 
+        has the intended effect of replacing the first character in the string with "0".
+ 
+        Likely a false positive. 
+      -->
+
+   <Match>
+      <Class name="com.lidp.enterprise.process.tablemodule.APFECT00" />
+      <Method name="reverseTrans" />
+      <Bug pattern="RE_POSSIBLE_UNINTENDED_PATTERN" />
+   </Match>
+
+   <!--  APGXML10.java line 1770
+     
+     Find Bugs Report:
+     ================================================
+     Bug: "." or "|" used for regular expression in com.lidp.enterprise.process.module.APGXML10.generateAgency()
+
+     A String function is being invoked and "." or "|" is being passed to a parameter      that takes a regular expression as an argument. Is this what you intended? For      example 
+     •s.replaceAll(".", "/") will return a String in which every character has been      replaced by a '/' character 
+     •s.split(".") always returns a zero length array of String 
+     •"ab|cd".replaceAll("|", "/") will return "/a/b/|/c/d/" 
+     •"ab|cd".split("|") will return array with six (!) elements: [, a, b, |, c, d] 
+     
+     Rank: Scariest (4), confidence: Normal
+     Pattern: RE_POSSIBLE_UNINTENDED_PATTERN 
+     Type: RE, Category: CORRECTNESS (Correctness)  
+     ===============================================
+ 
+    The code:
+ 
+	      aaNumber = prefix + aaNumber.substring(prefix.length()).replaceAll(".", "#");
+ 
+    Appears to have the intended effect of replacing all of the trailing digits with "#"
+
+    Likely a false positive.    
+    -->
+
+   <Match>
+      <Class name="com.lidp.enterprise.process.module.APGXML10" />
+      <Method name="generateAgency" />
+      <Bug pattern="RE_POSSIBLE_UNINTENDED_PATTERN" />
+   </Match>
+
+
+   <!-- APPLDE00.java line 470
+
+      Find Bugs Report:
+     ================================================
+      Bug: Return value of java.math.BigDecimal.compareTo(BigDecimal) ignored in com.lidp.enterprise.process.transaction.APPLDE00.editTableEntries(PFDE_SubEntry)
+
+      The return value of this method should be checked. One common cause of this warning is to invoke a method on an immutable object, thinking that it updates the object. For example, in the following code fragment,
+
+      String dateString = getHeaderField(name);
+      dateString.trim();
+
+
+      the programmer seems to be thinking that the trim() method will update the String referenced by dateString. But since Strings are immutable, the trim() function returns a new String value, which is being ignored here. The code should be corrected to: 
+
+      String dateString = getHeaderField(name);
+      dateString = dateString.trim();
+
+      Rank: Scary (5), confidence: Normal
+      Pattern: RV_RETURN_VALUE_IGNORED 
+      Type: RV, Category: CORRECTNESS (Correctness)
+      ================================================
+
+      the code:
+            if (! Simple_Edits.isSpaces(subEntry.getBEN_TYPE()) &&
+          subEntry.getBEN_MULT().compareTo(BigDecimal.ZERO) != 0)
+
+      This is incorrect as the value returned by compareTo() is being used in the inequality check.
+      This is a false positive.
+      -->
+
+   <Match>
+      <Class name="com.lidp.enterprise.process.transaction.APPLDE00" />
+      <Method name="editTableEntries" />
+      <Bug pattern="RV_RETURN_VALUE_IGNORED" />
+   </Match>
+
+   <!-- APTRVB02.java line 610
+
+   Find Bugs Report:
+   ================================================
+   Bug: Integer remainder modulo 1 computed in com.lidp.enterprise.process.tablemodule.APTRVB02.processVoluntaryBill() 
+
+   Any expression (exp % 1) is guaranteed to always return zero. Did you mean (exp & 1) or (exp % 2) instead? 
+
+   Rank: Scary (9), confidence: High
+   Pattern: INT_BAD_REM_BY_1 
+   Type: INT, Category: STYLE (Dodgy code)
+   ================================================
+
+   The code:
+        case "MO":
+          billingCount = dtad.getMonthField() / 1;
+          remainder = dtad.getMonthField() % 1;
+          break;
+
+    Based on the rest of the switch statement, this instance of using modulo 1 appears to be correct. The remainder field is modulo'd by divisors of 12 in each successive case.
+   -->
+
+    <Match>
+      <Class name="com.lidp.enterprise.process.tablemodule.APTRVB02" />
+      <Method name="processVoluntaryBill" />
+      <Bug pattern="INT_BAD_REM_BY_1" />
+    </Match>
+
+<!--
+      Find Bugs Report:
+      ================================================
+      Bug: Dereference of the result of readLine() without nullcheck in com.lidp.enterprise.ejb.util.LogMaintenanceBean.doWork()
+    
+      The result of invoking readLine() is dereferenced without checking to see if the result is null. If there are no more lines of text to read, readLine() will  return null and dereferencing that will generate a null pointer exception. 
+    
+      Rank: Of Concern (15), confidence: Normal
+      Pattern: NP_DEREFERENCE_OF_READLINE_VALUE 
+      Type: NP, Category: STYLE (Dodgy code)
+      ================================================
+      The code:
+             try (BufferedReader reader = new BufferedReader(new FileReader(logmaintdate)))
+             {
+                String str = reader.readLine();
+                lastRun.set(Calendar.YEAR, Integer.parseInt(str.substring(0,4)));
+                lastRun.set(Calendar.MONTH, Integer.parseInt(str.substring(4, 6)));
+                lastRun.set(Calendar.DAY_OF_MONTH, Integer.parseInt(str.substring(6)));
+                lastRun.set(Calendar.HOUR_OF_DAY, 0);
+                lastRun.set(Calendar.MINUTE, 0);
+                lastRun.set(Calendar.SECOND, 0);
+                lastRun.set(Calendar.MILLISECOND, 0);
+             }
+             catch (Exception e) // assume it's time to clear
+             {
+                lastRun.setTimeInMillis(0);
+                log("Last maintenance date is unknown, assuming it's time to clear logs");
+             }
+    
+       Because the call to readLines() is within a try block, it should be safe to ignore FindBugs' warning.
+   -->
+
+   <Match>
+      <Class name="com.lidp.enterprise.ejb.util.LogMaintenanceBean" />
+      <Method name="doWork" />
+      <Bug pattern="NP_DEREFERENCE_OF_READLINE_VALUE" />
+   </Match>
+
+<!--  
+      Find Bugs Report:
+      ================================================
+      Bug: Class com.lidp.enterprise.persistence.util.TSAC_TSQ_Utility defines non-transient non-serializable instance field tsDBUtil
+
+      This Serializable class defines a non-primitive instance field which is neither transient, Serializable, or java.lang.Object, and does not appear to implement the Externalizable interface or the readObject() and writeObject() methods.  Objects of this class will not be deserialized correctly if a non-Serializable object is stored in this field.
+
+      Rank: Troubling (14), confidence: High
+      Pattern: SE_BAD_FIELD 
+      Type: Se, Category: BAD_PRACTICE (Bad practice)
+      ================================================
+      
+      There is a @SuppressWarnings("serial") in this class, which suggests that this issue is already known and should be disregarded.
+-->
+
+   <Match>
+      <Class name="com.lidp.enterprise.persistence.util.TSAC_TSQ_Utility" />
+      <Bug pattern="SE_BAD_FIELD" />
+      <Field name="tsDBUtil" />
+   </Match>
+
+<!--  
+      Find Bugs Report:
+      ================================================
+      Bug: Possible null pointer dereference of APVPAA00.vpgpEntry in com.lidp.enterprise.process.module.APVPAA00.completeGross()
+
+      There is a branch of statement that, if executed, guarantees that a null value will be dereferenced, which would generate a NullPointerException when the code is executed. Of course, the problem might be that the branch or statement is infeasible and that the null pointer exception can't ever be executed; deciding that is beyond the ability of FindBugs. 
+
+      Rank: Scary (8), confidence: Normal
+      Pattern: NP_NULL_ON_SOME_PATH 
+      Type: NP, Category: CORRECTNESS (Correctness)
+      ================================================
+      
+      The code in question is located inside a try block, so if a Null Pointer Exception occurs, it will be handled.
+-->
+
+    <Match>
+      <Class name="com.lidp.enterprise.process.module.APVPAA00" />
+      <Method name="completeGross" />
+      <Bug pattern="NP_NULL_ON_SOME_PATH" />
+    </Match>
+
+<!--  
+      Find Bugs Report:
+      ================================================
+      Bug: Possible null pointer dereference in com.lidp.enterprise.ejb.util.LogMaintenanceBean.<multiple> due to return value of called method
+
+      The return value from a method is dereferenced without a null check, and the return value of that method is one that should generally be checked for null. This may lead to a NullPointerException when the code is executed. 
+
+      Rank: Troubling (13), confidence: Normal
+      Pattern: NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE 
+      Type: NP, Category: STYLE (Dodgy code)
+
+      ================================================
+      
+      There are if-statements that ensure the File objects in question are directories, ensuring that the methods called on them will never return null.
+-->
+
+    <Match>
+      <Class name="com.lidp.enterprise.ejb.util.LogMaintenanceBean" />
+      <Or> <!--the Or tag makes it so all specified methods are matched. -->
+           <Method name="cleanForegroundErrorLogs" />
+           <Method name="cleanBackgroundErrorLogs"/>
+           <Method name="cleanLogs"/>
+           <Method name="deleteFile"/>
+           <Method name="getAllFilePaths"/>
+      </Or>
+      <Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE" />
+    </Match>
+
+    <!--  
+          Find Bugs Report:
+          ================================================
+          Bug: Possible null pointer dereference in com.lidp.enterprise.process.module.APGXML10.processFile(String, GXM1_Entry) due to return value of called method
+
+          The return value from a method is dereferenced without a null check, and the return value of that method is one that should generally be checked for null. This may lead to a NullPointerException when the code is executed. 
+
+          Rank: Troubling (13), confidence: Normal
+          Pattern: NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE 
+          Type: NP, Category: STYLE (Dodgy code)
+          ================================================
+          
+          There is a check to see if stagedFile exists before fileName is assigned. if it doesn't, the try block in function generate() will catch the NullPointerException caused by fileName not being assigned.
+    -->
+
+    <Match>
+      <Class name="com.lidp.enterprise.process.module.APGXML10" />
+      <Method name="processFile" />
+      <Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE" />
+    </Match>
+
+</FindBugsFilter>

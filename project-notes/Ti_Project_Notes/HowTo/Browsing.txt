@@ -1,0 +1,22 @@
+
+When browsing a database table use the startbrowse readnext function code "BN" rather
+than a startbrowse function followed by a readnext call.  This reduces overhead.
+
+Once all other mfioArea fields are loaded;
+
+  	     mfioArea.setFunctionCode("BN");
+         mfioArea.setReturnCode("");
+         
+         while (mfioArea.isSuccessful())
+         {
+            apmfio00.process();  // Changes a functionCode of "BN" to "RN"
+            
+            if (mfioArea.isSuccessful())
+            {
+               doSomething();
+            }
+         }
+         
+         mfioArea.setFunctionCode("BZ");
+         apmfio00.process();
+ 

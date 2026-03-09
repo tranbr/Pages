@@ -1,0 +1,134 @@
+Logging in Titanium
+=================
+
+	In the Ti_Logging project is class com.lidp.shared.util.LIDP_Logger.  This class provides 
+a standard interface to for creating log entries in Titanium.  
+This class offers several static (meaning that LIDP_Logger does not need to be instantiated) 
+methods to create log entries.
+	
+	public static fatal(Object program, String msg);
+	public static error(Object program, String msg);
+	public static warn(Object program, String msg);
+	public static info(Object program, String msg);
+	public static debug(Object program, String msg);
+	public static trace(Object program, String msg);
+	
+		'program' is the name of the calling class (use 'this').  This is used to identify where the message originated.
+		'msg' is any text that is to be logged.
+	
+	To create a 'trace' level message, simply code:
+		LIDP_Logger.trace(this, "This is a trace message");
+		
+	The log file will show:
+		15:17:31,153 TRACE [com.lidp.server.ejb.session.control.BackgroundControlSessionBean] - This is a log message
+	
+	The default log format that LIDP_Logger uses is:
+   		HH:MM:SS,sss level [originating class] - message	
+	
+Given that the logging software allows the level of detail that is actually written to the log to be changed
+on the fly, it is beneficial to load up Titanium with all sorts of pertinent logging messages.  Even if
+most of those are turned off by default in a production environment.  If trouble occurs, the tech staff 
+can turn on more detailed logging without having to compile code or bounce the server.
+Of course, there is a performance hit from logging messages that will normally never be seen.
+
+
+LIDP_Logger utilizes Apache log4j (log for Java) to do the actual logging.  Keep reading for more 
+information about log4j and what it offers.
+
+
+	
+Log4j offers many built-in features that Titanium could take advantage of:
+ - Support for many types of log destinations including console, file, email, etc.
+ - Log messages can be sent to multiple destinations
+ - Messages can be routed by priority (e.g. FATAL messages get sent directly to on-call staff cell phone)
+ - Dynamic configuration without bouncing server
+ - Ability to turn log messages on and off when they are needed
+ 
+ 
+
+Log messages are written to a 'logger' with a specified 'priority' or 'level'.  The level signals the 
+severity of the message.  The defined levels from high to low priority are:
+		FATAL, ERROR, WARN, INFO, DEBUG, TRACE
+
+		
+Loggers are identified by a name.  For Titanium, loggers will either be named 'com.lidp' or will use 
+the actual class name (e.g. 'com.lidp.server.persistence.util.APMFIO00').
+
+When a log message is created, log4j first compares the priority of the message with the set level for the 
+named logger.  If the priority of the message is equal to or higher than the set level for the logger, 
+the message is sent to the log destination (a.k.a. 'appenders').  A logger can have multiple 'appenders'
+which allows a message to go to multiple destinations.  In addition to the levels listed above, there is 
+also level 'ALL' which is lower than 'TRACE' and it enables all log messages.  There is also 'OFF' which 
+is higher than 'FATAL'.  A logger set to 'OFF' does not allow any messages.
+  
+Logger names are hierarchical based on the nodes that make up the logger name.  So, 
+if a level has not been set for a given logger name, log4j looks up the hierarchy to see if a level has
+been set for a higher, or more generic, logger name.
+
+For example, Titanium sets the level for logger 'com.lidp' to 'ALL' by default.  
+
+	com.lidp.server.ejb.session.facade.TransProcessor has the following code:
+
+	  public Admin processAdminTran(Admin admin)
+ 	  {	   
+ 	     LIDP_Logger.trace(this, "***********************************************************");
+ 	     LIDP_Logger.trace(this, "processAdmin");     
+	     ...
+	  
+	This code is calling the following method: LIDP_Logger.trace(Object o, String msg).  This method 
+	writes 'msg' with priority of 'TRACE' to a logger named 'com.lidp.server.ejb.session.facade.TransProcessor' 
+	(the logger name is derived from o.getClass().getName()).   
+	
+	log4J first looks to see what level is set for the full logger name.  If that is not set, it takes off
+	the last node and looks again.
+	Logger													Level
+	com.lidp.server.ejb.session.facade.TransProcessor		null (= not set)	
+	com.lidp.server.ejb.session.facade						null (= not set)	
+	com.lidp.server.ejb.session								null (= not set)	
+	com.lidp.server.ejb										null (= not set)	
+	com.lidp.server											null (= not set)	
+	com.lidp												ALL
+	
+	Since logger 'com.lidp' is set to level 'ALL' and 'TRACE' is higher than 'ALL', message msg is
+	sent to the appender assigned to the logger.
+	
+	The fact that the logger names are hierarchical means that the logging level can be set fine tuned
+	to get pertinent message and filter out unnecessary ones.
+
+
+
+LIDP_Logger creates a default 'appender' or destination for logger 'com.lidp' which is a file named 
+'com.lidp_YYYYMMDD.log'.  This file appears in the home directory of the user (/home/userid on Linux).
+
+
+The logging levels can be changed on the fly without bouncing JBoss.  This can be done by editing file 
+'jboss-log4j.xml' which can be found in the 'server/default/conf' directory in the JBoss installation.
+
+For example, add the following lines before the <root> tag: 
+
+    <category name="com.lidp.server.process">
+     <priority value="OFF" />
+   </category>
+
+   <root>....
+      
+   This will turn off all logging message from loggers names 'com.lidp.server.process.*'.  That is unless 
+   a lower level logger name has a different level set.
+   
+   
+   
+ =====================================================================
+ Reference
+ 
+
+	Actual priority literal values from org.apache.log4j.Priority ranked high to low:
+		OFF		+MAX (largest positive int)
+		FATAL	50000
+		ERROR	40000
+		WARN	30000
+		INFO	20000
+		DEBUG	10000
+		TRACE	 5000
+		ALL		-MAX (largest negative int)
+		
+

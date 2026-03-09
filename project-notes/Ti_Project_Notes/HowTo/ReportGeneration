@@ -1,0 +1,466 @@
+How to generate a report: 
+Documentation by Harry Carpenter
+
+Note: the code snippets are from the project TI-1607 : Support ESTB Report. I give credit to Joe, Frank, Ricardo, Alex, Steve, and Rosana for their helpful assistance. Feel free to use my code as inspiration, but there are no guarantees that it will work or be applicable toward your project. Thank you!
+
+
+1) Here is an example on how to create the report method. This will be in your APXXXXX class in the  TI-Enterprise/src/com/lidp/enterprise/process/module package:
+
+=====================================================================================================================================
+Here is some example code from APESTR10:
+
+
+private void createEstbReport(String exrDate, String exrTime, String issueDate) 
+   {      
+      
+      //You need to create an ESTB extract class -> See REPT_ESTB_Extract class for inspiration	
+      REPT_ESTB_Extract estbExtract = new REPT_ESTB_Extract();
+	
+	  //You need to create an ESTB entry class -> See REPT_ESTB_Entry class for inspiration
+      REPT_ESTB_Entry myEntry = new REPT_ESTB_Entry();
+      
+	  //If you are trying to find the difference between dates, use DateAdjust area.
+      dateAdjustArea = new DateAdjust_Area();
+      dateAdjustArea.setIssueDate(effectiveDate);
+      dateAdjustArea.setOtherDate(exrDate);
+      DateAdjust.getDiffBetweenDates365_Months_and_Days(dateAdjustArea);
+      
+	  //Set values for your altKey
+	  //Note altKey1 is RPAC_AlternateKey1, it all depends on your Utility Type:
+      altKey1.setAK1_COMPANY_CODE(companyRecord.getCOMPANY_CODE());
+      altKey1.setAK1_REPORT_ID("ESTB");
+      
+
+      //If you want your report in a sorted order, you need to set the variable key:
+      altKey1.setAK1_VARIABLE_KEY(taskTimeControl.getFOREGROUND_BACKGROUND_IND() + (9999 - dateAdjustArea.getMonthField() + trco.getSTATUS_TIMING_CTL() + commRecord.getTRANS_TYPE() + xracKey.getPOLICY_NUMBER()));
+      altKey1.setPRINT_STATUS(trco.getSTATUS_TIMING_CTL());
+      
+	  //Set values for your report (Note, you will need to create getter/setter methods in your REPT_XXXX_Entry class)
+      myEntry.setCompanyCode(taskTimeControl.getCOMPANY_CODE());
+      myEntry.setDurationSinceLastSave(dateAdjustArea.getMonthField());
+      myEntry.setIssueDate(issueDate);
+      myEntry.setLastSavedDate(exrDate);
+      myEntry.setLastSavedTime(exrTime);
+      myEntry.setPlan(trco.getPLAN_CODE());
+      myEntry.setPolicy(xracKey.getPOLICY_NUMBER());
+      myEntry.setRequestDate(xrac.getMAINT_EIBDATE());
+      myEntry.setRequestTime(xrac.getMAINT_EIBTIME());
+      myEntry.settransactionName(commRecord.getTRANS_TYPE());
+      myEntry.setStatusTimingCode(trco.getSTATUS_TIMING_CTL());
+      myEntry.setSuccessRead(successfulRead);
+      myEntry.setEffectiveDate(effectiveDate);
+      myEntry.setEffectiveTime(effectiveTime);
+      
+	  //Add myEntry into your extract
+      estbExtract.addREPT_ESTB_Entry(myEntry);
+
+
+      //Create an RWEP_ProcessExtract Area:
+      RWEP_ProcessExtract_Area rwepArea = new RWEP_ProcessExtract_Area();
+      rwepArea.setCompanyCode(workPolicy.getTRAC_PRIMARY_KEY().getCOMPANY_CODE());
+      rwepArea.setContractNumber(workPolicy.getTRAC_PRIMARY_KEY().getPOLICY_NUMBER());
+     	
+	  //Make sure you set the variable key of rwepArea to altKey1’s variable key
+      rwepArea.setVariableKey(altKey1.getAK1_VARIABLE_KEY());
+      
+	  //In RWEP_AREA, set your extract as your report object:
+      rwepArea.setReportObject(estbExtract);
+      
+      rwepArea.setDpDesk(operatorsRecord.getDESK_DEFAULT());
+      rwepArea.setComments("Generated in program: " + this.getClass().getName());
+      rwepArea.setReportID("ESTB");
+
+	  //Create RWEP_Parms: 
+      RWEP_Parms rwepParms = new RWEP_Parms(parms);
+      rwepParms.setAcbmUtility(acbmWorkPolicyUtility);
+      rwepParms.setAdminRequest(new AdminRequest());
+      rwepParms.setAdminResponse(new AdminResponse());
+      rwepParms.setAgencyControl(new GFAC_AgencyControl());
+      rwepParms.setAgentControl(new GRAC_AGENT_CONTROL());
+      rwepParms.setCommunicationRecord(commRecord);
+      rwepParms.setCompanyRecord(companyRecord);
+      rwepParms.setErrorUtility(errorUtility);
+      rwepParms.setListAbstractTO(new LIST_AbstractTO());
+      rwepParms.setOperatorsRecord(operatorsRecord);
+      rwepParms.setPolicyMasterControl(workPolicy);
+      rwepParms.setRwflClientIndexArea(new RWFL_ClientIndex_Area());
+      rwepParms.setTaskTimeControl(taskTimeControl);
+      rwepParms.setTsscShortScreenArea(new TSSC_ShortScreen_Area());
+      rwepParms.setUserInfo(new UserInfo());
+      rwepParms.setRwepExtractProcessing(rwepArea);
+
+      if (Simple_Edits.isSpaces(rwepArea.getEntryType()))
+      {
+         rwepArea.setEntryType("0000");
+      }
+
+	  //Create an APRWEP00 so your data can be processed into a report:
+      APRWEP00 aprwep00 = new APRWEP00();
+      aprwep00.coreProcess(rwepParms);
+
+      if (! rwepArea.isSuccessful())
+      {
+         parms.getErrorUtility().loadError("82464P", this.getClass().getName(), rwepArea.getReturnCode());
+      }
+
+      if (rwepArea.getReturnCode() != '0')
+      {
+         errorUtility.loadError("35049R", this.getClass().getName(), rwepArea.getReturnCode());
+      }
+   }
+
+==============================================================================================================================================
+
+2) Call your createXXXReport() in the place where you want it to be called. In my example, I called it at the end of the locatedSave() method in APESTR10.
+
+==============================================================================================================================================
+
+3) Add your REPT_XXXX_Extract and REPT_XXXX_Entry to the ADMI_Reporting.properties.template file. An example would be:
+
+	XSALIAS1431=REPT_ESTB_Extract|REPT_ESTB_Extract
+	XSALIAS1432=REPT_ESTB_Entry|REPT_ESTB_Entry
+
+================================================================================================================================================
+
+4) Once you have finished these steps, do a gradle rebuild, and run your program. In Jem, do the transaction that generates your report. If you would like to see if reports are being generated, breakpoints are your best friend! 
+If you are unsure how to generate a report in JEM, please see the file: TI-1607_Unit_Test.docx in Jira.  
+
+==================================================================================================================================================
+
+5) How to test if reports are being generated:
+
+	1)	Go to PostGresIII
+	2)	Go to your database
+	3)	Make sure you click refresh
+	4)	Inside Schemas, click on tables
+	5)	Search for the table that contains your data. For example, if you are using RPAC as your key, you need to search adbrpac.
+	6)	After finding the table, click on the SQL symbol on top of the page.
+	7)	Run this query:
+ 		select variable_data_object from adbrpac
+ 		where AK1_REPORT_ID = 'ESTB'
+	8)	 If there is data, then you have succeeded at putting your data into the database.
+
+=====================================================================================================================================================
+
+ 6) Important! If you see this error:
+	14:00:27,961 ERROR [stderr] (Thread-27 (ActiveMQ-client-global-threads-317407364)) java.io.InvalidClassException: com.lidp.model.admin.persistence.REPT_ESTB_Extract; local class incompatible: stream classdesc serialVersionUID = -2390401990896385402, local class serialVersionUID = 661058466750954063
+	It means that you have changed the REPT_ESTB_Extract or REPT_ESTB_Entry or XML_ESTB_Extract or XML_ESTB_Entry classes, making them incompatible with the current data.
+	If you encounter this, you need to delete the data currently in the database. To do this, run this query in pgAdmin III:
+	delete from adbrpac
+	where AK1_REPORT_ID = 'ESTB'
+
+	Every time you change the extract or entry, you need to run this query or you will get a serialization error!
+
+	BTW: if you get this error:
+		Exception: Need to specify class name in environment or system property: java.naming.factory.initial
+		Then, you need to delete your current Ti_Client-Handler-Resources and relink it in your Ti_Client_Listener
+		If you get any other strange errors with starting JEM, try doing a Gradle refresh on all project folders.
+
+==========================================================================================================================================================
+
+7) Now, you need to create an APXXX00 class inside the TI-Enterprise/src/com/lidp/enterprise/process/tablemodule package. Here is a simple example of the class:
+
+//Make sure the class extends ReportProcessing
+public class APRSTB00 extends ReportProcessing
+{
+   private REPT_ESTB_Extract rept;
+   
+	//Note: PassAreaESTB is a private class inside the APRSTB00 class. See the PassAreaESTB class for inspiration.
+	private PassAreaESTB passArea;
+
+   @Override
+   protected void initializationCall()
+   {
+      super.initializationCall();
+      rept = new REPT_ESTB_Extract();
+      passArea = new PassAreaESTB();
+      parms.setPASS_AREA(passArea);
+   }
+
+   @Override
+   protected void reInitialize()
+   {
+      super.reInitialize();
+      passArea = (PassAreaESTB) parms.getPASS_AREA();
+   }
+
+   @Override
+   protected void detailCall()
+   {
+      try
+      {
+         rept = (REPT_ESTB_Extract) rpac.getReportObject();
+
+         for (REPT_ESTB_Entry entry : rept.getTotalEntrySet()) 
+         {
+            //Set the values of the passArea. You are getting these values from your report’s extract TotalEntrySet()
+            passArea.setCompanyCode(entry.getCompanyCode());
+            passArea.setDurationSinceLastSave(entry.getDurationSinceLastSave());
+            passArea.setEffectiveDate(entry.getEffectiveDate());
+            passArea.setIssueDate(entry.getIssueDate());
+            passArea.setLastSavedDate(entry.getLastSavedDate());
+            passArea.setLastSavedTime(entry.getLastSavedTime());
+            passArea.setPlan(entry.getPlan());
+            passArea.setPolicy(entry.getPolicy());
+            passArea.setRequestDate(entry.getRequestDate());
+            passArea.setRequestTime(entry.getRequestTime());
+            passArea.settransactionName(entry.gettransactionName());
+            passArea.setSuccessRead(entry.getSuccessRead());
+            passArea.setStatusTimingCode(entry.getStatusTimingCode());
+            passArea.setEffectiveTime(entry.getEffectiveTime());
+            
+			//You will also need to create an XML Totals class. See XML_ESTB_Totals class for inspiration. 
+            XML_ESTB_Totals totals = new XML_ESTB_Totals();
+            
+             //Note: PassAreaESTBTotals is a private class inside the APESTR10 class. See the XML_ESTB_Totals class for inspiration.  
+      		PassAreaESTBTotals systemSourceTotals = new PassAreaESTBTotals();
+            
+            //Set the values of system source totals
+			systemSourceTotals.setCompanyCode(passArea.getCompanyCode()); 	
+			systemSourceTotals.setDurationSinceLastSave(passArea.getDurationSinceLastSave());
+            systemSourceTotals.setEffectiveDate(passArea.getHistoricalDate());
+            systemSourceTotals.setIssueDate(passArea.getIssueDate());
+            systemSourceTotals.setLastSavedDate(passArea.getLastSavedDate());
+            systemSourceTotals.setLastSavedTime(passArea.getLastSavedTime());
+            systemSourceTotals.setPlan(passArea.getPlan());
+            systemSourceTotals.setPolicy(passArea.getPolicy());
+            systemSourceTotals.setRequestDate(passArea.getRequestDate());
+            systemSourceTotals.setRequestTime(passArea.getRequestTime());
+            systemSourceTotals.settransactionName(passArea.gettransactionName());
+            systemSourceTotals.setSuccessRead(passArea.getSuccessRead());
+            systemSourceTotals.setStatusTimingCode(passArea.getStatusTimingCode());
+            systemSourceTotals.setEffectiveTime(passArea.getEffectiveTime());
+            passArea.addPassAreaESTBTotals(systemSourceTotals);
+
+            for (PassAreaESTBTotals newEntry : passArea.getTotalEntrySet())
+            {
+               //You will also need to create an XML Entry class. See XML_ESTB_Totals class for inspiration. 
+  			   XML_ESTB_TotalEntry totalsEntry = new XML_ESTB_TotalEntry();
+               totalsEntry.setCompanyCode(newEntry.getCompanyCode());
+               totalsEntry.setDurationSinceLastSave(newEntry.getDurationSinceLastSave());
+               totalsEntry.setEffectiveDate(newEntry.getEffectiveDate());
+               totalsEntry.setEffectiveTime(newEntry.getEffectiveTime());
+               totalsEntry.setIssueDate(newEntry.getIssueDate());
+               totalsEntry.setLastSavedDate(newEntry.getLastSavedDate());
+               totalsEntry.setLastSavedTime(newEntry.getLastSavedTime());
+               totalsEntry.setPlan(newEntry.getPlan());
+               totalsEntry.setPolicy(newEntry.getPolicy());
+               totalsEntry.setRequestDate(newEntry.getRequestDate());
+               totalsEntry.setRequestTime(newEntry.getRequestTime());
+               totalsEntry.settransactionName(newEntry.gettransactionName());
+               totalsEntry.setSuccessRead(newEntry.getSuccessRead());
+               totalsEntry.setStatusTimingCode(newEntry.getStatusTimingCode());
+               //Add totalsEntry to totals  
+			   totals.addXML_ESTB_TotalEntry(totalsEntry);
+            }
+			
+			//Add totals to the xmlReportExtract
+            xmlReportExtract.setTotals(totals);
+         }
+         
+         super.detailCall();
+      }
+      catch (Exception e)
+      {
+         e.printStackTrace();
+      }
+   }
+
+==================================================================================================================================
+
+8) Create the CSV-File:
+Note: The CSV file should go in the file: Ti_XSL/xsl
+
+==================================================================================================================================
+<?xml version="1.0" encoding="UTF-8"?>
+<?mso-application progid="Excel.Sheet"?>
+
+<xsl:stylesheet version="1.0"
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+	<xsl:output method="text" />	
+	<!-- Support ESTB CSV XSL Transformation Process -->
+ 	<xsl:template match="/">
+		//Make sure your templates are applied for an effect to happen!
+    	<xsl:apply-templates select="XML__ReportExtract"/>
+    	<xsl:apply-templates select="XML__ReportExtract/totals"/>
+  	</xsl:template>		
+	<xsl:template match="XML__ReportExtract">  
+	    <xsl:text>"Company Code:" </xsl:text><xsl:value-of select="./companyCode" /><xsl:text>,</xsl:text>
+		<xsl:text>&#10;</xsl:text>
+		<xsl:text>"Company Name:" </xsl:text><xsl:text>"</xsl:text><xsl:value-of select="./companyName" /><xsl:text>"</xsl:text><xsl:text>,</xsl:text>
+		<xsl:text>&#10;</xsl:text>
+		<xsl:text>"Report Description: " </xsl:text><xsl:text>"</xsl:text><xsl:value-of select="./reportDescription" /><xsl:text>,</xsl:text><xsl:text>"</xsl:text>
+		<xsl:text>&#10;</xsl:text>
+		<xsl:text>"Report ID:" </xsl:text><xsl:value-of select="./reportID" /><xsl:text>,</xsl:text>
+		<xsl:text>&#10;</xsl:text>
+		//If you are adding dates, you need to format them like this:
+		<xsl:variable name="fromMonth" select="substring(./fromDate, 6, 2)"/>
+		<xsl:variable name="fromDay" select="substring(./fromDate, 9)"/>
+		<xsl:variable name="fromYear" select="substring(./fromDate, 1, 4)"/>
+		<xsl:variable name="fromDate" select="concat($fromMonth, '-', $fromDay, '-', $fromYear)" />		
+		<xsl:text>"From Date:" </xsl:text><xsl:value-of select="$fromDate" /><xsl:text>,</xsl:text>
+		<xsl:text>&#10;</xsl:text>
+		<xsl:variable name="thruMonth" select="substring(./thruDate, 6, 2)"/>
+		<xsl:variable name="thruDay" select="substring(./thruDate, 9)"/>
+		<xsl:variable name="thruYear" select="substring(./thruDate, 1, 4)"/>
+		<xsl:variable name="thruDate" select="concat($thruMonth, '-', $thruDay, '-', $thruYear)" />
+		<xsl:text>"Thru Date:" </xsl:text><xsl:value-of select="$thruDate" /><xsl:text>,</xsl:text>
+		<xsl:text>&#10;</xsl:text>
+		<xsl:variable name="reportMonth" select="substring(./reportDate, 6, 2)"/>
+		<xsl:variable name="reportDay" select="substring(./reportDate, 9)"/>
+		<xsl:variable name="reportYear" select="substring(./reportDate, 1, 4)"/>
+		<xsl:variable name="reportDate" select="concat($reportMonth, '-', $reportDay, '-', $reportYear)" />
+		<xsl:text>"Report Date:" </xsl:text><xsl:value-of select="$reportDate" /><xsl:text>,</xsl:text>
+		<xsl:text>&#10;</xsl:text>
+	    <xsl:text>"Report Time:" </xsl:text><xsl:value-of select="./reportTime" /><xsl:text>,</xsl:text>
+		<xsl:text>&#10;</xsl:text>
+		<xsl:text>"Printed By:" </xsl:text><xsl:value-of select="./printedBy" /><xsl:text>,</xsl:text>	
+		<xsl:text>&#10;</xsl:text>	
+		<xsl:text>&#10;</xsl:text>	
+		</xsl:template>
+		
+		
+		//How to get data from your extract into your ESTB file:
+		<xsl:template match="totals">
+			//Add a comma to put items in different columns. This is an example of how to format labels:
+			<xsl:text>"Company Code"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Policy Number"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Transaction Type"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Plan"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Issue Date"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Request Date"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Request Time"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Effective Date"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Effective Time"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Successful Read"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Last Saved Date"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Last Saved Time"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Status Timing Code"</xsl:text><xsl:text>,</xsl:text>
+			<xsl:text>"Months Difference"</xsl:text><xsl:text>&#10;</xsl:text>
+		
+			//You need to select= “totalEntrySet/XML__XXX__TotalEntry”	
+	    	<xsl:for-each select="totalEntrySet/XML__ESTB__TotalEntry">
+				//If you are adding dates, you need to format them like this:
+				<xsl:variable name="issueMonth" select="substring(./issueDate, 6, 2)"/>
+				<xsl:variable name="issueDay" select="substring(./issueDate, 9)"/>
+				<xsl:variable name="issueYear" select="substring(./issueDate, 1, 4)"/>
+				<xsl:variable name="issueDate" select="concat($issueMonth, '-', $issueDay, '-', $issueYear)" />
+			
+				<xsl:variable name="lastMonth" select="substring(./lastSavedDate, 6, 2)"/>
+				<xsl:variable name="lastDay" select="substring(./lastSavedDate, 9)"/>
+				<xsl:variable name="lastYear" select="substring(./lastSavedDate, 1, 4)"/>
+				<xsl:variable name="lastSavedDate" select="concat($lastMonth, '-', $lastDay, '-', $lastYear)" />
+			
+				<xsl:variable name="requestMonth" select="substring(./requestDate, 6, 2)"/>
+				<xsl:variable name="requestDay" select="substring(./requestDate, 9)"/>
+				<xsl:variable name="requestYear" select="substring(./requestDate, 1, 4)"/>
+				<xsl:variable name="requestDate" select="concat($requestMonth, '-', $requestDay, '-', $requestYear)" />
+				
+				<xsl:variable name="fromMonth" select="substring(./effectiveDate, 6, 2)"/>
+				<xsl:variable name="fromDay" select="substring(./effectiveDate, 9)"/>
+				<xsl:variable name="fromYear" select="substring(./effectiveDate, 1, 4)"/>
+				<xsl:variable name="effectiveDate" select="concat($fromMonth, '-', $fromDay, '-', $fromYear)" />
+	    		<xsl:value-of select="companyCode" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="policy" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="transactionName" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="plan" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="$issueDate" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="$requestDate" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="requestTime" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="$effectiveDate" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="effectiveTime" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="successfulRead" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="$lastSavedDate" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="lastSavedTime" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="statusTimingCode" /><xsl:text>,</xsl:text>
+	    		<xsl:value-of select="durationSinceLastSave" /><xsl:text>&#10;</xsl:text>
+				//Add ‘&#10’ to create a separate row    
+	    	</xsl:for-each>
+	</xsl:template>
+</xsl:stylesheet>
+
+=============================================================================================================================
+
+
+9) If you see the report in RWDR, but if the CSV is not printing any data when you process it, then you need to go to RG01 to change the Report Module from APGENR00 to APXXXX0.
+Also make sure you include the CSV report type. Don't forget to reload after changing and be sure to include this change in your pull request.
+
+
+=============================================================================================================================
+
+
+10) If you encounter an XML problem where it references the object instead of printing the value like this:
+
+<BILL__Notice__Relationship__Area>
+	<relationship>I</relationship>
+		<clients>
+			<BILL__Notice__Relationship__Entry 
+			reference="../../../BILL__Notice__Relationship__Area/clients/BILL__Notice__Relationship__Entry"/> //Reference to the first instance of the object
+			<BILL__Notice__Relationship__Entry>
+			<name>Great Mann</name>
+			<addresses>
+				<string>Has Address Addresstown AL 12345</string>
+			</addresses>
+		<rels>I </rels>
+		<initObjects>true</initObjects>
+	</BILL__Notice__Relationship__Entry>
+
+It can occur when you are trying to reference the same object more than once. For example, if you are going through the same loop of objects for each relationship, 
+the XML report will get confused on which values to use, so it will reference out. For instance (APRBDR00 and APRBDL00 from TI-1599):
+
+for (Character clientRel : allClientRelationships)
+      {
+         BILL_Notice_Relationship_Area tempRelEntries = new BILL_Notice_Relationship_Area();
+
+         for (BILL_Notice_Relationship_Entry myEntry : relEntries) 
+         {
+            for (char entryRel : myEntry.getRels().toCharArray())
+            {
+               if (entryRel == clientRel)
+               {  
+                  tempRelEntries.addClient(myEntry); //The XML report will get confused on which myEntry to use, so it will reference to the first instance of the object.
+               }
+            }
+         }
+
+         tempRelEntries.setRelationship(clientRel);
+         reportObj.addRelationshipEntry(tempRelEntries); 
+
+
+
+
+To fix this, I recommend this example solution (APRBDR00 and APRBDL00 from TI-1599):
+
+for (Character clientRel : allClientRelationships)
+      {
+         BILL_Notice_Relationship_Area tempRelEntries = new BILL_Notice_Relationship_Area();
+
+         for (BILL_Notice_Relationship_Entry myEntry : relEntries) 
+         {
+            for (char entryRel : myEntry.getRels().toCharArray())
+            {
+               if (entryRel == clientRel)
+               {
+                  BILL_Notice_Relationship_Entry tempClient = new BILL_Notice_Relationship_Entry(); //Create a temporary object
+                  tempClient.setName(myEntry.getName()); //set that object to the first value (e.g.name) 
+                  
+                  for (String address: myEntry.getAddresses())
+                  {
+                     tempClient.addAddress(address); //second value
+                  }
+                  
+                  tempRelEntries.addClient(tempClient);
+               }
+            }
+         }
+
+         tempRelEntries.setRelationship(clientRel);
+         reportObj.addRelationshipEntry(tempRelEntries);
+
+==============================================================================================================================
+
+If you have followed these steps above correctly, you should be able to generate a report. 
+I have also attached documentation to see how to generate a report in JEM. The file is called TI-1607_Unit_Test.docx. 
+
+If you have any additional questions or you are blocked in any step of the report generation process, please email me or stop by my desk. 
+I am more than happy to assist you!
